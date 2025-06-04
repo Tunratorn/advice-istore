@@ -1,0 +1,136 @@
+.text-fadein {
+    animation-name: animetion-fadein;
+    animation-duration: 1s;
+    animation-timing-function: ease;
+    animation-direction: normal;
+    animation-fill-mode: forwards;
+}
+
+@keyframes animetion-fadein {
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* status profile order animetion */
+.animetion-icon-loading {
+    animation: spinLoading 1.5s linear infinite;
+}
+
+@keyframes spinLoading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animetion-icon-cancel {
+    animation: spinCancel 0.8s linear infinite;
+}
+
+@keyframes spinCancel {
+    0% {
+        scale: 0.8;
+    }
+    50% {
+        scale: 1.2;
+    }
+    100% {
+        scale: 0.8;
+    }
+}
+
+.animetion-icon-shipping {
+    transform: translateX(-35px);
+    animation: shipping-fast 1s ease-in-out infinite;
+}
+
+@keyframes shipping-fast {
+    form {
+        transform: translateX(-45px);
+    }
+    to {
+        transform: translateX(45px);
+    }
+}
+
+.animetion-icon-complete {
+    animation: boxcheck 1s ease-in-out infinite;
+}
+
+@keyframes boxcheck {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-5px) rotate(10deg);
+    }
+    75% {
+        transform: translateY(-5px) rotate(-10deg);
+    }
+    80% {
+        transform: translateY(-5px) rotate(10deg);
+    }
+    95% {
+        transform: translateY(-5px) rotate(-10deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.quantity-cart.anime-cart {
+    animation: showcart ease-in-out 0.3s forwards;
+}
+
+@keyframes showcart {
+    0% {
+        scale: 0.5;
+    }
+    50% {
+        scale: 1.8;
+    }
+    100% {
+        scale: 1;
+    }
+}
+
+.anime-product-video {
+    animation: viewVideoProduct both;
+    animation-timeline: view();
+}
+
+@keyframes viewVideoProduct {
+    45%,55% {
+        max-width: 100%;
+        padding: 0;
+        margin: 0;
+        border-radius: 0;
+    }
+}
+
+.anime-fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: 0.6s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+

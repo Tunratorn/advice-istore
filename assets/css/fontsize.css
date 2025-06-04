@@ -1,0 +1,1756 @@
+.font-bold-10 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(6px, 2vw, 10px);
+}
+
+.font-bold-11 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(7px, 2vw, 11px);
+}
+
+.font-bold-12 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(8px, 2vw, 12px);
+}
+
+.font-bold-13 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(9px, 2vw, 13px);
+}
+
+.font-bold-14 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(10px, 2vw, 14px);
+}
+
+.font-bold-15 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(11px, 2vw, 15px);
+}
+
+.font-bold-16 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(12px, 2vw, 16px);
+}
+
+.font-bold-17 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(13px, 2vw, 17px);
+}
+
+.font-bold-18 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(14px, 2vw, 18px);
+}
+
+.font-bold-19 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(15px, 2vw, 19px);
+}
+
+.font-bold-20 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(16px, 3vw, 20px);
+}
+
+.font-bold-21 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(17px, 3vw, 21px);
+}
+
+.font-bold-22 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(18px, 3vw, 22px);
+}
+
+.font-bold-23 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(19px, 3vw, 23px);
+}
+
+.font-bold-24 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(20px, 3vw, 24px);
+}
+
+.font-bold-25 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(21px, 3vw, 25px);
+}
+
+.font-bold-26 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(22px, 3vw, 26px);
+}
+
+.font-bold-27 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(23px, 3vw, 27px);
+}
+
+.font-bold-28 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(24px, 3vw, 28px);
+}
+
+.font-bold-29 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(25px, 3vw, 29px);
+}
+
+.font-bold-30 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(26px, 4vw, 30px);
+}
+
+.font-bold-31 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(27px, 4vw, 31px);
+}
+
+.font-bold-32 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(28px, 4vw, 32px);
+}
+
+.font-bold-33 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(29px, 4vw, 33px);
+}
+
+.font-bold-34 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(30px, 4vw, 34px);
+}
+
+.font-bold-35 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(31px, 4vw, 35px);
+}
+
+.font-bold-36 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(32px, 4vw, 36px);
+}
+
+.font-bold-37 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(33px, 4vw, 37px);
+}
+
+.font-bold-38 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(34px, 4vw, 38px);
+}
+
+.font-bold-39 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(35px, 4vw, 39px);
+}
+
+.font-bold-40 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(36px, 4vw, 40px);
+}
+
+.font-bold-41 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(37px, 4vw, 41px);
+}
+
+.font-bold-42 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(38px, 4vw, 42px);
+}
+
+.font-bold-43 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(39px, 4vw, 43px);
+}
+
+.font-bold-44 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(40px, 4vw, 44px);
+}
+
+.font-bold-45 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(41px, 4vw, 45px);
+}
+
+.font-bold-46 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(42px, 4vw, 46px);
+}
+
+.font-bold-47 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(43px, 4vw, 47px);
+}
+
+.font-bold-48 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(44px, 4vw, 48px);
+}
+
+.font-bold-49 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(45px, 4vw, 49px);
+}
+
+.font-bold-50 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(46px, 4vw, 50px);
+}
+
+.font-bold-51 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(47px, 5vw, 51px);
+}
+
+.font-bold-52 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(48px, 5vw, 52px);
+}
+
+.font-bold-53 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(49px, 5vw, 53px);
+}
+
+.font-bold-54 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(50px, 5vw, 54px);
+}
+
+.font-bold-55 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(51px, 5vw, 55px);
+}
+
+.font-bold-56 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(52px, 5vw, 56px);
+}
+
+.font-bold-57 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(53px, 5vw, 57px);
+}
+
+.font-bold-58 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(54px, 5vw, 58px);
+}
+
+.font-bold-59 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(55px, 5vw, 59px);
+}
+
+.font-bold-60 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(56px, 5vw, 60px);
+}
+
+.font-bold-61 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(57px, 5vw, 61px);
+}
+
+.font-bold-62 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(58px, 5vw, 62px);
+}
+
+.font-bold-63 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(59px, 5vw, 63px);
+}
+
+.font-bold-64 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(60px, 5vw, 64px);
+}
+
+.font-bold-65 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(61px, 5vw, 65px);
+}
+
+.font-bold-66 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(62px, 5vw, 66px);
+}
+
+.font-bold-67 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(63px, 5vw, 67px);
+}
+
+.font-bold-68 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(64px, 5vw, 68px);
+}
+
+.font-bold-69 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(65px, 5vw, 69px);
+}
+
+.font-bold-70 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(66px, 5vw, 70px);
+}
+
+.font-bold-71 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(67px, 5vw, 71px);
+}
+
+.font-bold-72 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(68px, 5vw, 72px);
+}
+
+.font-bold-73 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(69px, 5vw, 73px);
+}
+
+.font-bold-74 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(70px, 5vw, 74px);
+}
+
+.font-bold-75 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(71px, 5vw, 75px);
+}
+
+.font-bold-76 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(72px, 5vw, 76px);
+}
+
+.font-bold-77 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(73px, 5vw, 77px);
+}
+
+.font-bold-78 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(74px, 5vw, 78px);
+}
+
+.font-bold-79 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(75px, 5vw, 79px);
+}
+
+.font-bold-80 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(76px, 5vw, 80px);
+}
+
+.font-bold-81 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(77px, 5vw, 81px);
+}
+
+.font-bold-82 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(78px, 5vw, 82px);
+}
+
+.font-bold-83 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(79px, 5vw, 83px);
+}
+
+.font-bold-84 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(80px, 5vw, 84px);
+}
+
+.font-bold-85 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(81px, 5vw, 85px);
+}
+
+.font-bold-86 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(82px, 5vw, 86px);
+}
+
+.font-bold-87 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(83px, 5vw, 87px);
+}
+
+.font-bold-88 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(84px, 5vw, 88px);
+}
+
+.font-bold-89 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(85px, 5vw, 89px);
+}
+
+.font-bold-90 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(86px, 5vw, 90px);
+}
+
+.font-bold-91 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(87px, 5vw, 91px);
+}
+
+.font-bold-92 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(88px, 5vw, 92px);
+}
+
+.font-bold-93 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(89px, 5vw, 93px);
+}
+
+.font-bold-94 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(90px, 5vw, 94px);
+}
+
+.font-bold-95 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(91px, 5vw, 95px);
+}
+
+.font-bold-96 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(92px, 5vw, 96px);
+}
+
+.font-bold-97 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(93px, 5vw, 97px);
+}
+
+.font-bold-98 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(94px, 5vw, 98px);
+}
+
+.font-bold-99 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(95px, 5vw, 99px);
+}
+
+.font-bold-100 {
+  font-family: "DBHeavent-Bold";
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  font-size: clamp(96px, 5vw, 100px);
+}
+
+.font-10 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(6px, 2vw, 10px);
+}
+
+.font-11 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(7px, 2vw, 11px);
+}
+
+.font-12 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(8px, 2vw, 12px);
+}
+
+.font-13 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(9px, 2vw, 13px);
+}
+
+.font-14 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(10px, 2vw, 14px);
+}
+
+.font-15 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(11px, 2vw, 15px);
+}
+
+.font-16 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(12px, 2vw, 16px);
+}
+
+.font-17 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(13px, 2vw, 17px);
+}
+
+.font-18 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(14px, 2vw, 18px);
+}
+
+.font-19 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(15px, 2vw, 19px);
+}
+
+.font-20 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(16px, 3vw, 20px);
+}
+
+.font-21 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(17px, 3vw, 21px);
+}
+
+.font-22 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(18px, 3vw, 22px);
+}
+
+.font-23 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(19px, 3vw, 23px);
+}
+
+.font-24 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(20px, 3vw, 24px);
+}
+
+.font-25 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(21px, 3vw, 25px);
+}
+
+.font-26 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(22px, 3vw, 26px);
+}
+
+.font-27 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(23px, 3vw, 27px);
+}
+
+.font-28 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(24px, 3vw, 28px);
+}
+
+.font-29 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(25px, 3vw, 29px);
+}
+
+.font-30 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(26px, 4vw, 30px);
+}
+
+.font-31 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(27px, 4vw, 31px);
+}
+
+.font-32 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(28px, 4vw, 32px);
+}
+
+.font-33 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(29px, 4vw, 33px);
+}
+
+.font-34 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(30px, 4vw, 34px);
+}
+
+.font-35 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(31px, 4vw, 35px);
+}
+
+.font-36 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(32px, 4vw, 36px);
+}
+
+.font-37 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(33px, 4vw, 37px);
+}
+
+.font-38 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(34px, 4vw, 38px);
+}
+
+.font-39 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(35px, 4vw, 39px);
+}
+
+.font-40 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(36px, 4vw, 40px);
+}
+
+.font-41 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(37px, 4vw, 41px);
+}
+
+.font-42 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(38px, 4vw, 42px);
+}
+
+.font-43 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(39px, 4vw, 43px);
+}
+
+.font-44 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(40px, 4vw, 44px);
+}
+
+.font-45 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(41px, 4vw, 45px);
+}
+
+.font-46 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(42px, 4vw, 46px);
+}
+
+.font-47 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(43px, 4vw, 47px);
+}
+
+.font-48 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(44px, 4vw, 48px);
+}
+
+.font-49 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(45px, 4vw, 49px);
+}
+
+.font-50 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(46px, 4vw, 50px);
+}
+
+.font-51 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(47px, 5vw, 51px);
+}
+
+.font-52 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(48px, 5vw, 52px);
+}
+
+.font-53 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(49px, 5vw, 53px);
+}
+
+.font-54 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(50px, 5vw, 54px);
+}
+
+.font-55 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(51px, 5vw, 55px);
+}
+
+.font-56 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(52px, 5vw, 56px);
+}
+
+.font-57 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(53px, 5vw, 57px);
+}
+
+.font-58 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(54px, 5vw, 58px);
+}
+
+.font-59 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(55px, 5vw, 59px);
+}
+
+.font-60 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(56px, 5vw, 60px);
+}
+
+.font-61 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(57px, 5vw, 61px);
+}
+
+.font-62 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(58px, 5vw, 62px);
+}
+
+.font-63 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(59px, 5vw, 63px);
+}
+
+.font-64 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(60px, 5vw, 64px);
+}
+
+.font-65 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(61px, 5vw, 65px);
+}
+
+.font-66 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(62px, 5vw, 66px);
+}
+
+.font-67 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(63px, 5vw, 67px);
+}
+
+.font-68 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(64px, 5vw, 68px);
+}
+
+.font-69 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(65px, 5vw, 69px);
+}
+
+.font-70 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(66px, 5vw, 70px);
+}
+
+.font-71 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(67px, 5vw, 71px);
+}
+
+.font-72 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(68px, 5vw, 72px);
+}
+
+.font-73 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(69px, 5vw, 73px);
+}
+
+.font-74 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(70px, 5vw, 74px);
+}
+
+.font-75 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(71px, 5vw, 75px);
+}
+
+.font-76 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(72px, 5vw, 76px);
+}
+
+.font-77 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(73px, 5vw, 77px);
+}
+
+.font-78 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(74px, 5vw, 78px);
+}
+
+.font-79 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(75px, 5vw, 79px);
+}
+
+.font-80 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(76px, 5vw, 80px);
+}
+
+.font-81 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(77px, 5vw, 81px);
+}
+
+.font-82 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(78px, 5vw, 82px);
+}
+
+.font-83 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(79px, 5vw, 83px);
+}
+
+.font-84 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(80px, 5vw, 84px);
+}
+
+.font-85 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(81px, 5vw, 85px);
+}
+
+.font-86 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(82px, 5vw, 86px);
+}
+
+.font-87 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(83px, 5vw, 87px);
+}
+
+.font-88 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(84px, 5vw, 88px);
+}
+
+.font-89 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(85px, 5vw, 89px);
+}
+
+.font-90 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(86px, 5vw, 90px);
+}
+
+.font-91 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(87px, 5vw, 91px);
+}
+
+.font-92 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(88px, 5vw, 92px);
+}
+
+.font-93 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(89px, 5vw, 93px);
+}
+
+.font-94 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(90px, 5vw, 94px);
+}
+
+.font-95 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(91px, 5vw, 95px);
+}
+
+.font-96 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(92px, 5vw, 96px);
+}
+
+.font-97 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(93px, 5vw, 97px);
+}
+
+.font-98 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(94px, 5vw, 98px);
+}
+
+.font-99 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(95px, 5vw, 99px);
+}
+
+.font-100 {
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: clamp(96px, 5vw, 100px);
+}
+
+.line-height-10 {
+  line-height: clamp(6px, 2vw, 10px);
+}
+
+.line-height-11 {
+  line-height: clamp(7px, 2vw, 11px);
+}
+
+.line-height-12 {
+  line-height: clamp(8px, 2vw, 12px);
+}
+
+.line-height-13 {
+  line-height: clamp(9px, 2vw, 13px);
+}
+
+.line-height-14 {
+  line-height: clamp(10px, 2vw, 14px);
+}
+
+.line-height-15 {
+  line-height: clamp(11px, 2vw, 15px);
+}
+
+.line-height-16 {
+  line-height: clamp(12px, 2vw, 16px);
+}
+
+.line-height-17 {
+  line-height: clamp(13px, 2vw, 17px);
+}
+
+.line-height-18 {
+  line-height: clamp(14px, 2vw, 18px);
+}
+
+.line-height-19 {
+  line-height: clamp(15px, 2vw, 19px);
+}
+
+.line-height-20 {
+  line-height: clamp(16px, 3vw, 20px);
+}
+
+.line-height-21 {
+  line-height: clamp(17px, 3vw, 21px);
+}
+
+.line-height-22 {
+  line-height: clamp(18px, 3vw, 22px);
+}
+
+.line-height-23 {
+  line-height: clamp(19px, 3vw, 23px);
+}
+
+.line-height-24 {
+  line-height: clamp(20px, 3vw, 24px);
+}
+
+.line-height-25 {
+  line-height: clamp(21px, 3vw, 25px);
+}
+
+.line-height-26 {
+  line-height: clamp(22px, 3vw, 26px);
+}
+
+.line-height-27 {
+  line-height: clamp(23px, 3vw, 27px);
+}
+
+.line-height-28 {
+  line-height: clamp(24px, 3vw, 28px);
+}
+
+.line-height-29 {
+  line-height: clamp(25px, 3vw, 29px);
+}
+
+.line-height-30 {
+  line-height: clamp(26px, 4vw, 30px);
+}
+
+.line-height-31 {
+  line-height: clamp(27px, 4vw, 31px);
+}
+
+.line-height-32 {
+  line-height: clamp(28px, 4vw, 32px);
+}
+
+.line-height-33 {
+  line-height: clamp(29px, 4vw, 33px);
+}
+
+.line-height-34 {
+  line-height: clamp(30px, 4vw, 34px);
+}
+
+.line-height-35 {
+  line-height: clamp(31px, 4vw, 35px);
+}
+
+.line-height-36 {
+  line-height: clamp(32px, 4vw, 36px);
+}
+
+.line-height-37 {
+  line-height: clamp(33px, 4vw, 37px);
+}
+
+.line-height-38 {
+  line-height: clamp(34px, 4vw, 38px);
+}
+
+.line-height-39 {
+  line-height: clamp(35px, 4vw, 39px);
+}
+
+.line-height-40 {
+  line-height: clamp(36px, 4vw, 40px);
+}
+
+.line-height-41 {
+  line-height: clamp(37px, 4vw, 41px);
+}
+
+.line-height-42 {
+  line-height: clamp(38px, 4vw, 42px);
+}
+
+.line-height-43 {
+  line-height: clamp(39px, 4vw, 43px);
+}
+
+.line-height-44 {
+  line-height: clamp(40px, 4vw, 44px);
+}
+
+.line-height-45 {
+  line-height: clamp(41px, 4vw, 45px);
+}
+
+.line-height-46 {
+  line-height: clamp(42px, 4vw, 46px);
+}
+
+.line-height-47 {
+  line-height: clamp(43px, 4vw, 47px);
+}
+
+.line-height-48 {
+  line-height: clamp(44px, 4vw, 48px);
+}
+
+.line-height-49 {
+  line-height: clamp(45px, 4vw, 49px);
+}
+
+.line-height-50 {
+  line-height: clamp(46px, 4vw, 50px);
+}
+
+.line-height-51 {
+  line-height: clamp(47px, 5vw, 51px);
+}
+
+.line-height-52 {
+  line-height: clamp(48px, 5vw, 52px);
+}
+
+.line-height-53 {
+  line-height: clamp(49px, 5vw, 53px);
+}
+
+.line-height-54 {
+  line-height: clamp(50px, 5vw, 54px);
+}
+
+.line-height-55 {
+  line-height: clamp(51px, 5vw, 55px);
+}
+
+.line-height-56 {
+  line-height: clamp(52px, 5vw, 56px);
+}
+
+.line-height-57 {
+  line-height: clamp(53px, 5vw, 57px);
+}
+
+.line-height-58 {
+  line-height: clamp(54px, 5vw, 58px);
+}
+
+.line-height-59 {
+  line-height: clamp(55px, 5vw, 59px);
+}
+
+.line-height-60 {
+  line-height: clamp(56px, 5vw, 60px);
+}
+
+.line-height-61 {
+  line-height: clamp(57px, 5vw, 61px);
+}
+
+.line-height-62 {
+  line-height: clamp(58px, 5vw, 62px);
+}
+
+.line-height-63 {
+  line-height: clamp(59px, 5vw, 63px);
+}
+
+.line-height-64 {
+  line-height: clamp(60px, 5vw, 64px);
+}
+
+.line-height-65 {
+  line-height: clamp(61px, 5vw, 65px);
+}
+
+.line-height-66 {
+  line-height: clamp(62px, 5vw, 66px);
+}
+
+.line-height-67 {
+  line-height: clamp(63px, 5vw, 67px);
+}
+
+.line-height-68 {
+  line-height: clamp(64px, 5vw, 68px);
+}
+
+.line-height-69 {
+  line-height: clamp(65px, 5vw, 69px);
+}
+
+.line-height-70 {
+  line-height: clamp(66px, 5vw, 70px);
+}
+
+.line-height-71 {
+  line-height: clamp(67px, 5vw, 71px);
+}
+
+.line-height-72 {
+  line-height: clamp(68px, 5vw, 72px);
+}
+
+.line-height-73 {
+  line-height: clamp(69px, 5vw, 73px);
+}
+
+.line-height-74 {
+  line-height: clamp(70px, 5vw, 74px);
+}
+
+.line-height-75 {
+  line-height: clamp(71px, 5vw, 75px);
+}
+
+.line-height-76 {
+  line-height: clamp(72px, 5vw, 76px);
+}
+
+.line-height-77 {
+  line-height: clamp(73px, 5vw, 77px);
+}
+
+.line-height-78 {
+  line-height: clamp(74px, 5vw, 78px);
+}
+
+.line-height-79 {
+  line-height: clamp(75px, 5vw, 79px);
+}
+
+.line-height-80 {
+  line-height: clamp(76px, 5vw, 80px);
+}
+
+.line-height-81 {
+  line-height: clamp(77px, 5vw, 81px);
+}
+
+.line-height-82 {
+  line-height: clamp(78px, 5vw, 82px);
+}
+
+.line-height-83 {
+  line-height: clamp(79px, 5vw, 83px);
+}
+
+.line-height-84 {
+  line-height: clamp(80px, 5vw, 84px);
+}
+
+.line-height-85 {
+  line-height: clamp(81px, 5vw, 85px);
+}
+
+.line-height-86 {
+  line-height: clamp(82px, 5vw, 86px);
+}
+
+.line-height-87 {
+  line-height: clamp(83px, 5vw, 87px);
+}
+
+.line-height-88 {
+  line-height: clamp(84px, 5vw, 88px);
+}
+
+.line-height-89 {
+  line-height: clamp(85px, 5vw, 89px);
+}
+
+.line-height-90 {
+  line-height: clamp(86px, 5vw, 90px);
+}
+
+.line-height-91 {
+  line-height: clamp(87px, 5vw, 91px);
+}
+
+.line-height-92 {
+  line-height: clamp(88px, 5vw, 92px);
+}
+
+.line-height-93 {
+  line-height: clamp(89px, 5vw, 93px);
+}
+
+.line-height-94 {
+  line-height: clamp(90px, 5vw, 94px);
+}
+
+.line-height-95 {
+  line-height: clamp(91px, 5vw, 95px);
+}
+
+.line-height-96 {
+  line-height: clamp(92px, 5vw, 96px);
+}
+
+.line-height-97 {
+  line-height: clamp(93px, 5vw, 97px);
+}
+
+.line-height-98 {
+  line-height: clamp(94px, 5vw, 98px);
+}
+
+.line-height-99 {
+  line-height: clamp(95px, 5vw, 99px);
+}
+
+.line-height-100 {
+  line-height: clamp(96px, 5vw, 100px);
+}
+
+.color-bluedark {
+  color: #0A84FF;
+}
+
+.color-primary {
+  color: #0D95DA;
+}
+
+.color-graydark {
+  color: #636366;
+}
+
+.color-gray {
+  color: #8E8E93;
+}
+
+.color-red {
+  color: red;
+}
+
+.color-black {
+  color: #000;
+}
+
+.color-white {
+  color: #fff;
+}/*# sourceMappingURL=fontsize.css.map */

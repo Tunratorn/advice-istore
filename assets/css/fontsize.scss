@@ -1,0 +1,85 @@
+@for $i from 10 through 100 {
+    .font-bold-#{$i}{
+        font-family: 'DBHeavent-Bold';
+        font-style: normal;
+        font-weight: bold;
+        line-height: normal;
+
+        @if $i > 50 {
+            font-size: clamp(#{$i - 4}px, 5vw, #{$i}px);
+        }
+        @if $i >= 30 and $i <= 50 {
+            font-size: clamp(#{$i - 4}px, 4vw, #{$i}px);
+        }
+        @if $i >= 20 and $i < 30 {
+            font-size: clamp(#{$i - 4}px, 3vw, #{$i}px);
+        }
+        @if $i < 20 {
+            font-size: clamp(#{$i - 4}px, 2vw, #{$i}px);
+        }
+    }
+
+}
+
+@for $i from 10 through 100 {
+    .font-#{$i}{
+        font-style: normal;
+        font-weight: normal;
+        line-height: normal;
+
+        @if $i > 50 {
+            font-size: clamp(#{$i - 4}px, 5vw, #{$i}px);
+        }
+        @if $i >= 30 and $i <= 50 {
+            font-size: clamp(#{$i - 4}px, 4vw, #{$i}px);
+        }
+        @if $i >= 20 and $i < 30 {
+            font-size: clamp(#{$i - 4}px, 3vw, #{$i}px);
+        }
+        @if $i < 20 {
+            font-size: clamp(#{$i - 4}px, 2vw, #{$i}px);
+        }
+    }
+
+}
+
+@for $i from 10 through 100 {
+    .line-height-#{$i}{
+        @if $i > 50 {
+            line-height: clamp(#{$i - 4}px, 5vw, #{$i}px);
+        }
+        @if $i >= 30 and $i <= 50 {
+            line-height: clamp(#{$i - 4}px, 4vw, #{$i}px);
+        }
+        @if $i >= 20 and $i < 30 {
+            line-height: clamp(#{$i - 4}px, 3vw, #{$i}px);
+        }
+        @if $i < 20 {
+            line-height: clamp(#{$i - 4}px, 2vw, #{$i}px);
+        }
+    }
+
+}
+
+
+.color-bluedark {
+    color: #0A84FF;
+}
+.color-primary {
+    color: #0D95DA;
+}
+.color-graydark {
+    color: #636366;
+}
+.color-gray {
+    color: #8E8E93;
+}
+.color-red {
+    color: red;
+}
+.color-black {
+    color: #000;
+}
+.color-white {
+    color: #fff;
+}
