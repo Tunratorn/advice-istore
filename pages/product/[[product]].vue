@@ -12,6 +12,7 @@ const productName = ref('')
 const listProduct = ref([])
 const listAboutProduct = ref([])
 // const itemProduct = ref([])
+const isMobile = ref(false)
 
 const device_size = ref(0)
 
@@ -80,6 +81,8 @@ const swiperAbout = async () => {
     swiper_about = new Swiper(".swiper-content-about", {
         slidesPerView: slidesPerView_about.value,
         spaceBetween: 20,
+        // centeredSlides: isMobile.value,
+        freeMode: true,
         navigation: {
             nextEl: ".swiper-about-next",
             prevEl: ".swiper-about-prev",
@@ -108,22 +111,24 @@ const updateWidth = async () => {
         device_size.value = window.innerWidth
     
         slidesPerView_product.value = 1
-        slidesPerView_about.value = 1
+        slidesPerView_about.value = 1.5
+        isMobile.value = false
         if (window.innerWidth > 1200) {
             slidesPerView_about.value = 4
             slidesPerView_product.value = 3
         }
         else if (window.innerWidth > 991) {
             slidesPerView_about.value = 3
-            slidesPerView_product.value = 3
-        } 
-        else if (window.innerWidth > 768) {
-            slidesPerView_about.value = 3
             slidesPerView_product.value = 2
         } 
-        else if (window.innerWidth > 450) {
-            slidesPerView_about.value = 2
+        else if (window.innerWidth > 768) {
+            slidesPerView_about.value = 2.5
+            slidesPerView_product.value = 1.5
+        } 
+        else if (window.innerWidth <= 768) {
+            slidesPerView_about.value = 1.5
             slidesPerView_product.value = 1
+            isMobile.value = true
         } 
         
     }, 100);
@@ -168,8 +173,8 @@ onMounted(async () => {
                     </ul>
                 </nav>
             </div>
-            <div class="container-fluid bg-white mt-2 py-4 px-3">
-                <h1 class="text-subject">ผลิตภัณฑ์ {{ productName }} ทั้งหมด</h1>
+            <div class="container-fluid bg-white mt-2 py-4 px-0 px-md-5">
+                <h1 class="text-subject ps-3 ps-md-0">ผลิตภัณฑ์ {{ productName }} ทั้งหมด</h1>
                 <div class="series-wrapper mt-1 mb-3 mt-md-4 pt-md-3">
                     <ul class="form-control-product p-0">
                         <li v-for="(product, key) in listProduct" class="item-series">
@@ -184,10 +189,10 @@ onMounted(async () => {
                     </ul>
                 </div>
             </div>
-            <div class="container-fluid my-5 pb-1">
+            <div class="container-fluid my-5 pb-1 px-0 px-md-5">
                 <div class="mb-4">
-                    <h1 v-if="productName == 'iPhone'" class="text-subject">ดูไฮไลท์ต่างๆ ของ iPhone</h1>
-                    <h1 v-else class="text-subject">ทำความรู้จักกับ {{ productName }}</h1>
+                    <h1 v-if="productName == 'iPhone'" class="text-subject ps-3 ps-md-0">ดูไฮไลท์ต่างๆ ของ iPhone</h1>
+                    <h1 v-else class="text-subject ps-3 ps-md-0">ทำความรู้จักกับ {{ productName }}</h1>
                     <div class="wrapper-content-about">
                         <div class="overflow-hidden content-swiper-about">
                             <div class="row-swiper position-relative mt-4 mb-3 mx-2">
@@ -205,7 +210,7 @@ onMounted(async () => {
                             </div>
                         </div>
                     </div>
-                    <div class="group-btn-swiper-under my-3">
+                    <div v-if="!isMobile" class="group-btn-swiper-under my-3">
                         <button class="btn-swiper btn-swiper-prev-under swiper-about-prev"><i
                                 class="fa-solid fa-angle-left" style="font-size:16px;" data-v-02281a80=""></i></button>
                         <button class="btn-swiper btn-swiper-next-under swiper-about-next"><i
@@ -213,7 +218,7 @@ onMounted(async () => {
                     </div>
                 </div>
                 <div :id="`product${keyProduct}`" v-for="(product,keyProduct,index) in listProduct" class="mb-3">
-                    <h1 class="text-subject">ผลิตภัณฑ์ของ {{ product.serie }}</h1>
+                    <h1 class="text-subject ps-3 ps-md-0">ผลิตภัณฑ์ของ {{ product.serie }}</h1>
                     <div class="mt-3">
                         <SwiperProductCategory 
                             :object-menu="product.item"

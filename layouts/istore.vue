@@ -39,14 +39,14 @@
                                                 <button @click="login(pathLogin_)" class="btn-login">{{ $t('login') }}</button>
                                             </div>
                                             <div class="my-3 w-100 d-flex justify-content-center align-items-center gap-2">
-                                                <span class="font-20 color-gray">ยังไม่ได้เป็นสมาชิก?</span>
-                                                <span class="link-registor" data-bs-toggle="modal" data-bs-target="#modalRegistor">สมัครสมาชิก</span>
+                                                <span class="font-20 color-gray">{{ $t('not_member') }}</span>
+                                                <span class="link-registor" data-bs-toggle="modal" data-bs-target="#modalRegistor">{{ $t('register') }}</span>
                                             </div>
                                             <div class="form-texthr my-4">
                                                 <div id="hr">
                                                     <span></span>
                                                     <div class="w-100 d-flex justify-content-center position-absolute">
-                                                        <p class="text-tosocial">หรือเข้าสู่ระบบด้วย</p>
+                                                        <p class="text-tosocial">{{ $t('or_login_with') }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -57,11 +57,11 @@
                                                 <IconSocialLine class="icon-social"></IconSocialLine>
                                             </div>
                                             <div class="mt-4 w-100 d-flex justify-content-center">
-                                                <div class="text-footer-login">เมื่อเข้าสู่ระบบ ถือว่าคุณได้ยอมรับ 
-                                                    <a class="color-bluedark link-none-underlines" href="#" target="_blank">ข้อตกลงและเงื่อนไขการใช้งาน</a> 
-                                                    และรับทราบ 
-                                                    <a class="color-bluedark link-none-underlines" href="#" target="_blank">นโยบายความเป็นส่วนตัว</a>
-                                                        ของ Advice
+                                                <div class="text-footer-login">{{ $t('login_notice_con') }}
+                                                    <a class="color-bluedark link-none-underlines" href="#" target="_blank">{{ $t('terms_and_conditions') }}</a> 
+                                                    {{ $t('and') }} 
+                                                    <a class="color-bluedark link-none-underlines" href="#" target="_blank">{{ $t('privacy_policy') }}</a>
+                                                        {{ $t('of_advice') }}
                                                 </div>
                                             </div>
                                         </form>                                        
@@ -92,12 +92,12 @@
                                     <div class="d-flex justify-content-center w-100">
                                         <img class="logo-adviceistore-login" src="~/assets/img/iStore-Advice-Black.png" alt="logo-login-istore">
                                     </div>
-                                    <h1 class="text-center font-bold-36 w-100 mt-3">สมัครสมาชิก</h1>
+                                    <h1 class="text-center font-bold-36 w-100 mt-3">{{ $t('register') }}</h1>
                                     <form id="form_register" class="form-control-input mb-4">
                                         <div class="row m-0">
                                             <div class="col-12 col-sm-6 p-0 pe-sm-2">
                                                 <div class="form-group m-0 mb-2">
-                                                    <label for="nameRegistor" class="font-bold-20 mb-1">ชื่อ<span class="color-red">*</span></label>
+                                                    <label for="nameRegistor" class="font-bold-20 mb-1">{{ $t('first_name') }}<span class="color-red">*</span></label>
                                                     <div class="group-item-login">
                                                         <input type="text" class="form-control font-20 input-login" id="nameRegistor" aria-describedby="emailHelp" placeholder="">
                                                         <IconWarningInput></IconWarningInput>
@@ -106,7 +106,7 @@
                                             </div>
                                             <div class="col-12 col-sm-6 p-0 ps-sm-2">
                                                 <div class="form-group m-0 mb-2">
-                                                    <label for="lastnameRegistor" class="font-bold-20 mb-1">นามสกุล<span class="color-red">*</span></label>
+                                                    <label for="lastnameRegistor" class="font-bold-20 mb-1">{{ $t('last_name') }}<span class="color-red">*</span></label>
                                                     <div class="group-item-login">
                                                         <input type="text" class="form-control font-20 input-login" id="lastnameRegistor" aria-describedby="emailHelp" placeholder="">
                                                         <IconWarningInput></IconWarningInput>
@@ -115,7 +115,7 @@
                                             </div>
                                             <div class="col-12 col-md-6 p-0 pe-sm-2">
                                                 <div class="form-group m-0 mb-2">
-                                                    <label for="telRegistor" class="font-bold-20 mb-1">เบอร์โทรศัพท์มือถือ<span class="color-red">*</span></label>
+                                                    <label for="telRegistor" class="font-bold-20 mb-1">{{ $t('phone_number') }}<span class="color-red">*</span></label>
                                                     <div class="group-item-login">
                                                         <input type="text" class="form-control font-20 input-login" id="telRegistor" aria-describedby="emailHelp" placeholder="">
                                                         <IconWarningInput></IconWarningInput>
@@ -125,7 +125,7 @@
                                             <div class="col-12 col-md-6 p-0 ps-sm-2">
                                                 <div class="form-group m-0 mb-2">
                                                     <div class="d-flex align-items-center gap-2 mb-1">
-                                                        <label for="birthdayRegistor" class="font-bold-20 m-0">วัน / เดือน / ปีเกิด<span class="color-red">*</span></label>
+                                                        <label for="birthdayRegistor" class="font-bold-20 m-0">{{ $t('date_of_birth') }}<span class="color-red">*</span></label>
                                                         <IconInfo></IconInfo>
                                                     </div>
                                                     <div class="group-item-login">
@@ -139,7 +139,7 @@
                                             </div>
                                             <div class="col-12 p-0">
                                                 <div class="form-group m-0 mb-2">
-                                                    <label for="emailRegistor" class="font-bold-20 mb-1">อีเมล<span class="color-red">*</span></label>
+                                                    <label for="emailRegistor" class="font-bold-20 mb-1">{{ $t('email') }}<span class="color-red">*</span></label>
                                                     <div class="group-item-login">
                                                         <input type="email" class="form-control font-20 input-login" id="emailRegistor" aria-describedby="emailHelp" placeholder="ตัวอย่าง love@advice.co.th">
                                                         <IconWarningInput></IconWarningInput>
@@ -148,7 +148,7 @@
                                             </div>
                                             <div class="col-12 p-0">
                                                 <div class="form-group m-0 mb-2">
-                                                    <label for="passwordRegistor" class="font-bold-20 mb-1">รหัสผ่าน<span class="color-red">*</span></label>
+                                                    <label for="passwordRegistor" class="font-bold-20 mb-1">{{ $t('password') }}<span class="color-red">*</span></label>
                                                     <div class="group-item-login">
                                                         <input type="password" class="form-control font-20 input-login" id="passwordRegistor" aria-describedby="password" placeholder="Abc@123456" autocomplete="off">
                                                         <IconWarningInput></IconWarningInput>
@@ -159,7 +159,7 @@
                                             </div>
                                             <div class="col-12 p-0">
                                                 <div class="form-group m-0 mb-2">
-                                                    <label for="password2Registor" class="font-bold-20 mb-1">ยืนยันรหัสผ่าน<span class="color-red">*</span></label>
+                                                    <label for="password2Registor" class="font-bold-20 mb-1">{{ $t('confirm_password') }}<span class="color-red">*</span></label>
                                                     <div class="group-item-login">
                                                         <input type="password" class="form-control font-20 input-login" id="password2Registor" aria-describedby="password" placeholder="Abc@123456" autocomplete="off">
                                                         <IconWarningInput></IconWarningInput>
@@ -172,25 +172,25 @@
                                         <div class="form-check mt-3">
                                             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                                             <label class="form-check-label line-height-16 font-16" for="flexCheckDefault">
-                                                ฉันยอมรับ และยินยอมให้ข้อมูลส่วนบุคคลเพื่อรับการให้บริการจากบริษัท ฉันได้อ่านและทำความเข้าใจเกี่ยวกับ 
-                                                <a class="color-bluedark link-none-underlines" href="#" target="_blank">ข้อกำหนดเงื่อนไข</a> 
-                                                และ 
-                                                <a class="color-bluedark link-none-underlines" href="#" target="_blank">นโยบายข้อมูลส่วนบุคคล</a> 
-                                                ของแอดไวซ์แล้ว
+                                                {{ $t('accept_terms') }}
+                                                <a class="color-bluedark link-none-underlines" href="#" target="_blank">{{ $t('terms_and_conditions') }}</a>
+                                                {{ $t('conditions_and') }}
+                                                <a class="color-bluedark link-none-underlines" href="#" target="_blank">{{ $t('privacy_policy') }}</a>
+                                                {{ $t('of_advice') }}
                                             </label>
                                         </div>
                                         <div class="w-100 d-flex justify-content-center mt-3 px-4">
-                                            <button class="btn-login">สมัครสมาชิก</button>
+                                            <button class="btn-login">{{ $t('register') }}</button>
                                         </div>
                                         <div class="my-3 w-100 d-flex justify-content-center align-items-center gap-2">
-                                            <span class="font-20 color-gray">เป็นสมาชิกอยู่แล้ว?</span>
-                                            <span class="link-registor" data-bs-toggle="modal" data-bs-target="#modalLogin">เข้าสู่ระบบ</span>
+                                            <span class="font-20 color-gray">{{ $t('already_member') }}</span>
+                                            <span class="link-registor" data-bs-toggle="modal" data-bs-target="#modalLogin">{{ $t('login') }}</span>
                                         </div>
                                         <div class="form-texthr my-4">
                                             <div id="hr">
                                                 <span></span>
                                                 <div class="w-100 d-flex justify-content-center position-absolute">
-                                                    <p class="text-tosocial">หรือ สมัครสมาชิกด้วย</p>
+                                                    <p class="text-tosocial">{{ $t('or_register_with') }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,11 +211,11 @@
     </div>
 
     <!-- header mobile  -->
-    <header v-if="device_size > 0 && device_size <= 1200" class="header-mobile">
+    <header v-if="viewport.isLessThan('desktop')" class="header-mobile">
         <nav id="nav_mobile" class="navbar bg-black navbar-mobile py-0">
             <div class="group-logo-mobile">
                 <div class="group-line-bottom">
-                    <NuxtLink @click="unlockPage()" to="/">
+                    <NuxtLink @click="closeMenuMobile" to="/">
                         <img class="logo-adviceistore-mobile" src="/images/logo/iStore-Advice-Logos.png" alt="logo">
                     </NuxtLink>
                     <div class="w-100 d-flex position-absolute" style="bottom: -3px">
@@ -247,8 +247,8 @@
                 <IconHamburgerMenu id="hamburger_menu_mobile" @click="openMenuMobile()"></IconHamburgerMenu>
             </div>
         </nav>
-        <section id="wrapper_menu_mobile" class="wrapper-menu-mobile">
-            <div ref="scrollBox" id="content_menu_mobile" class="item-content-menumobile py-4 px-5">
+        <section ref="wrapper_menu_mobile" id="wrapper_menu_mobile" class="wrapper-menu-mobile">
+            <div ref="scrollBox" id="level1" class="menu-level active py-4 px-5">
                 <div v-if="userLogin" class="form-menu-mobile group-item-profile-mobile pb-3">
                     <div class="form-profile-mobile-menu">
                         <!-- <img width="22px" height="22px" src="/images/icon/userlogin.png" alt="img-icon-login"> -->
@@ -259,7 +259,8 @@
                 <div class="form-menu-mobile">
                     <ul class="ul-menu-mobile p-0">
                         <li v-for="(itemMenu,key) in menuGroup">
-                            <NuxtLink @click="unlockPage()" class="link-proudct-mobile" :to="`/product/${key.toLowerCase().replaceAll(` `,`-`)}`">{{ key }}</NuxtLink>
+                            <NuxtLink @click="goToLevel(2, key)" class="link-proudct-mobile">{{ key }} <IconArrowRight class="arrow-menu-icon"></IconArrowRight></NuxtLink>
+                            <!-- <NuxtLink @click="closeMenuMobile(),goToLevel(2, key)" class="link-proudct-mobile" :to="`/product/${key.toLowerCase().replaceAll(` `,`-`)}`">{{ key }} <IconArrowRight class="arrow-menu-icon"></IconArrowRight></NuxtLink> -->
                         </li>
                     </ul>
                 </div>
@@ -268,28 +269,31 @@
                         <li>
                             <a class="link-proudct-mobile" aria-current="page" href="#">{{ $t('promotion') }}</a>
                         </li>
+                        <!-- <li>
+                            <NuxtLink @click="closeMenuMobile()" class="link-proudct-mobile" to="/wheretobuy">{{ $t('search_branch') }}</NuxtLink>
+                        </li> -->
                         <li>
-                            <NuxtLink @click="unlockPage()" class="link-proudct-mobile" to="/wheretobuy">ค้นหาสาขาใกล้ฉัน</NuxtLink>
+                            <NuxtLink @click="closeMenuMobile()" class="link-proudct-mobile" to="/tradein">{{ $t('tradein') }}</NuxtLink>
                         </li>
                         <li>
-                            <NuxtLink @click="unlockPage()" class="link-proudct-mobile" to="/tradein">{{ $t('tradein') }}</NuxtLink>
+                            <NuxtLink @click="closeMenuMobile()" class="link-proudct-mobile" to="/whybuy">{{ $t('where_to_buy') }}</NuxtLink>
                         </li>
                         <li>
-                            <NuxtLink @click="unlockPage()" class="nav-link nav-link-white" to="/whybuy">ทำไมต้องซื้อสินค้ากับเรา</NuxtLink>
+                            <NuxtLink @click="closeMenuMobile()" class="link-proudct-mobile" to="/services">{{ $t('support_services') }}</NuxtLink>
                         </li>
                     </ul>
                 </div>
                 <div class="form-menu-mobile pt-1 pb-3">
-                    <p class="text-menu-mobile d-flex align-items-center gap-2 m-0">ตะกร้าสินค้า <span v-if="numCart_ > 0" class="num-cart-mobile">{{ numCart_ }}</span></p>
+                    <NuxtLink @click="closeMenuMobile()" class="text-menu-mobile d-flex align-items-center gap-2 m-0" style="text-decoration: none;" to="/cart">{{ $t('cart') }} <span v-if="numCart_ > 0" class="num-cart-mobile">{{ numCart_ }}</span></NuxtLink>
                 </div>
                 <div class="form-menu-mobile py-2">
                     <div @click="menuLanguageMobile()" id="language_mobile" class="text-menu-mobile menu-language">
                         <div class="d-flex align-items-center">
-                            <span class="me-3">ภาษาไทย</span>
+                            <span class="me-3">{{ $t('language_name') }}</span>
                             <img v-if="languageWeb.locale == 'th'" width="24px" height="auto" src="/images/icon/icon-thai.png" alt="icon-thai">
                             <img v-else width="24px" height="auto" src="/images/icon/icon-eng.png" alt="icon-thai">
                         </div>
-                        <IconArrowDown></IconArrowDown>
+                        <IconArrowDown style="fill: black;"></IconArrowDown>
                     </div>
                     <div id="form_content_language" class="wrapper-language-mobile mb-3">
                         <div class="list-footer-language w-100" @click="selectLanguage('th'),closeMenuLanguageMobile()" data-bs-toggle="dropdown" aria-expanded="false">
@@ -310,7 +314,76 @@
                     <div v-if="!userLogin" class="d-flex justify-content-center pt-2">
                         <button class="btn-login-mobile" data-bs-toggle="modal" data-bs-target="#modalLogin">{{ $t('login') }}</button>
                     </div>
-                    <button v-else @click="userLogin = null,closeMenuMobile()" class="btn-logout-mobile"><IconLogout class="icon-logout-mobile"></IconLogout> ออกจากระบบ</button>
+                    <button v-else @click="userLogin = null,closeMenuMobile()" class="btn-logout-mobile"><IconLogout class="icon-logout-mobile"></IconLogout> {{ $t('logout') }}</button>
+                </div>
+            </div>
+            
+            <!-- Level 2: Category Menu -->
+            <div class="menu-level py-4 px-5" id="level2">
+                <div class="nav-header form-menu-mobile pb-3">
+                    <button class="back-btn-menu-mobile" @click="goToLevel(1)">
+                        <IconArrowLeft class="icon-back-menu"></IconArrowLeft>
+                        <span>ย้อนกลับ</span>
+                    </button>
+                </div>
+                <div class="menu-content form-menu-mobile">
+                    <div id="level2-content">
+                        <ul class="ul-menu-mobile p-0">
+                            <li>
+                                <NuxtLink @click="closeMenuMobile" class="link-proudct-mobile" :to="`/product/${currentCategory2.toLowerCase().replaceAll(' ', '-')}`">
+                                    ดู {{ currentCategory2 }} ทั้งหมด
+                                </NuxtLink>
+                            </li>
+                            <li v-for="item in menuLevel2" :key="item.menu_name">
+                                <NuxtLink v-if="item.url ==''" class="link-proudct-mobile" @click="goToLevel(3, item.menu_name)">
+                                    {{ item.menu_name }} <IconArrowRight class="arrow-menu-icon"></IconArrowRight>
+                                </NuxtLink>
+                                <NuxtLink v-else @click="closeMenuMobile" class="link-proudct-mobile" :to="`${item.url}`">
+                                    {{ item.menu_name }}
+                                </NuxtLink>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="form-menu-mobile pb-4">
+                    <div v-if="!userLogin" class="d-flex justify-content-center pt-2">
+                        <button class="btn-login-mobile" data-bs-toggle="modal" data-bs-target="#modalLogin">{{ $t('login') }}</button>
+                    </div>
+                    <button v-else @click="userLogin = null,closeMenuMobile()" class="btn-logout-mobile"><IconLogout class="icon-logout-mobile"></IconLogout> {{ $t('logout') }}</button>
+                </div>
+            </div>
+           
+            <!-- Level 3: Category Menu -->
+            <div class="menu-level py-4 px-5" id="level3">
+                <div class="nav-header form-menu-mobile pb-3">
+                    <button class="back-btn-menu-mobile" @click="goToLevel(2)">
+                        <IconArrowLeft class="icon-back-menu"></IconArrowLeft>
+                        <span>ย้อนกลับ</span>
+                    </button>
+                </div>
+                <div class="menu-content form-menu-mobile pb-3">
+                    <div id="level3-content">
+                        <NuxtLink @click="closeMenuMobile" class="link-proudct-mobile mb-3" :to="`/${currentCategory2.toLowerCase().replaceAll(' ','-')}/${currentCategory3.toLowerCase().replaceAll(' ', '-')}`">ดู {{ currentCategory3 }} ทั้งหมด</NuxtLink>
+                        <div class="row">
+                            <div v-for="item in menuLevel3" :key="item.product_name" class="col-12 col-md-6 col-lg-4 mb-3">
+                                <NuxtLink 
+                                    @click="closeMenuMobile"
+                                    class="wrapper-img-product-mobile"
+                                    :to="`/productdetails/${currentCategory2.toLowerCase().replaceAll(' ','-')}/${currentCategory3.toLowerCase().replaceAll(' ','-')}/${item.product_name.toLowerCase().replaceAll(' ','-')}`"
+                                >
+                                    <img width="60%" :src="item.product_img" :alt="item.product_name" />
+                                    <span class="link-proudct-mobile justify-content-center pb-0">{{ item.product_name }}</span>
+                                    <span class="link-proudct-mobile justify-content-center">ราคาเริ่มต้น ฿{{ FormatPrice(item.sale_price) }} THB</span>
+                                </NuxtLink>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-menu-mobile pb-4">
+                    <div v-if="!userLogin" class="d-flex justify-content-center pt-2">
+                        <button class="btn-login-mobile" data-bs-toggle="modal" data-bs-target="#modalLogin">{{ $t('login') }}</button>
+                    </div>
+                    <button v-else @click="userLogin = null,closeMenuMobile()" class="btn-logout-mobile"><IconLogout class="icon-logout-mobile"></IconLogout> {{ $t('logout') }}</button>
                 </div>
             </div>
         </section>
@@ -338,13 +411,16 @@
                                 <a class="nav-link nav-link-white active" aria-current="page" href="#">{{ $t('promotion') }}</a>
                             </li>
                             <li class="nav-item">
-                                <NuxtLink class="nav-link nav-link-white" to="/wheretobuy">ค้นหาสาขาใกล้ฉัน</NuxtLink>
+                                <NuxtLink class="nav-link nav-link-white" to="/wheretobuy">{{ $t('search_branch') }}</NuxtLink>
                             </li>
                             <li class="nav-item">
                                 <NuxtLink class="nav-link nav-link-white" to="/tradein">{{ $t('tradein') }}</NuxtLink>
                             </li>
                             <li class="nav-item">
-                                <NuxtLink class="nav-link nav-link-white" to="/whybuy">ทำไมต้องซื้อสินค้ากับเรา</NuxtLink>
+                                <NuxtLink class="nav-link nav-link-white" to="/whybuy">{{ $t('where_to_buy') }}</NuxtLink>
+                            </li>
+                            <li class="nav-item">
+                                <NuxtLink class="nav-link nav-link-white" to="/services">{{ $t('support_services') }}</NuxtLink>
                             </li>
                         </ul>
                         <div class="navbar-item item-language item-language-white">
@@ -497,7 +573,7 @@
     </main>
 
       <!-- footer mobile  -->
-    <footer v-if="device_size > 0 && device_size <= 1200" class="d-flex justify-content-center p-4 px-sm-5 bg-black" style="position: relative;z-index: 998;">
+    <footer v-if="viewport.isLessThan('desktop')" class="d-flex justify-content-center p-4 px-sm-5 bg-black" style="position: relative;z-index: 998;">
         <div class="footer-content-mobile">
             <div class="form-menu-mobile group-logo-footer-mobile pt-3 pb-4">
                 <img class="logo-footer-mobile-advice" src="/images/logo/logogadvicei.png" alt="logo-footer-advice">
@@ -508,13 +584,14 @@
                 <div class="col-12 col-md-6 item-menu-mobile pb-2 p-0 pe-md-4">
                     <div class="form-menu-mobile py-3 py-sm-4">
                         <div style="width: 100%;max-width: 450px;">
-                            <img class="mb-3 mb-sm-4" style="height: clamp(40px, 8vw, 64px);" src="/images/logo/img-text-advice.png" alt="text-img-adviceiStore">
-                            <p class="font-text-footer mb-1 mb-sm-3">Advice iStore เป็นร้านค้าออนไลน์ของ 
+                            <img class="mb-3 mb-sm-4" style="height: clamp(50px, 8vw, 64px);" src="/images/logo/img-text-advice.png" alt="text-img-adviceiStore">
+                            <!-- <p class="font-text-footer mb-1 mb-sm-3">Advice iStore เป็นร้านค้าออนไลน์ของ 
                                 บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน) 
                                 พบกับสินค้าและอุปกรณ์เสริมจากแบรนด์ชั้นนำ ที่เราคัดสรรมาอย่างดี</p>
-                                <p class="font-text-footer m-1">พร้อมโปรโมชั่นพิเศษมากมาย
+                                <p class="font-text-footer m-0">พร้อมโปรโมชั่นพิเศษมากมาย
                                 และข้อเสนอที่คุณห้ามพลาดเพลิดเพลินกับการช้อปปิ้ง
-                                ที่ปลอดภัยและรวดเร็ว พร้อมบริการลูกค้าและการจัดส่งที่เป็นเลิศ ขอให้เราได้ดูแลคุณ</p>
+                                ที่ปลอดภัยและรวดเร็ว พร้อมบริการลูกค้าและการจัดส่งที่เป็นเลิศ ขอให้เราได้ดูแลคุณ</p> -->
+                            <p class="font-text-footer mb-1 mb-sm-3">{{ $t('footer_wording') }}<br>{{ $t('footer_wording_2') }}</p>
                         </div>
                     </div>
                 </div>
@@ -524,26 +601,26 @@
                             <div class="col-6">
                                 <h3 class="text-light">{{ $t('product') }}</h3>
                                 <ul class="footer-menu">
-                                    <li class="font-text-footer">แมค</li>
-                                    <li class="font-text-footer">ไอโฟน</li>
-                                    <li class="font-text-footer">ไอแพด</li>
-                                    <li class="font-text-footer">แอปเปิ้ล วอช</li>
-                                    <li class="font-text-footer">แอร์พอด</li>
-                                    <li class="font-text-footer">แอร์แทค</li>
-                                    <li class="font-text-footer">แอปเปิ้ล ทีวี</li>
-                                    <li class="font-text-footer">โฮมพอด มินิ</li>
-                                    <li class="font-text-footer">อุปกรณ์เสริม</li>
+                                    <li class="font-text-footer">Mac</li>
+                                    <li class="font-text-footer">iPhone</li>
+                                    <li class="font-text-footer">iPad</li>
+                                    <li class="font-text-footer">Watch</li>
+                                    <li class="font-text-footer">AirPods</li>
+                                    <li class="font-text-footer">Air Tag</li>
+                                    <li class="font-text-footer">Apple TV 4K</li>
+                                    <li class="font-text-footer">HomePod mini</li>
+                                    <li class="font-text-footer">Accessories</li>
                                 </ul>
                             </div>
                             <div class="col-6">
                                 <h3 class="text-light">{{ $t('help') }}</h3>
                                 <ul class="footer-menu">
-                                    <li class="font-text-footer">ติดต่อเรา</li>
-                                    <li class="font-text-footer">ช่วยเหลือด้านเทคนิค</li>
-                                    <li class="font-text-footer">การคืนสินค้าและขอคืนเงินออนไลน์</li>
-                                    <li class="font-text-footer">การจัดส่งสินค้า</li>
-                                    <li class="font-text-footer">ช่องทางชำระเงิน</li>
-                                    <li class="font-text-footer">ค้นหาสาขาใกล้ฉัน</li>
+                                    <li class="font-text-footer">{{ $t('contact_us_service') }}</li>
+                                    <li class="font-text-footer">{{ $t('technical_support') }}</li>
+                                    <li class="font-text-footer">{{ $t('returns_and_refunds') }}</li>
+                                    <li class="font-text-footer">{{ $t('delivery_service') }}</li>
+                                    <li class="font-text-footer">{{ $t('payment_methods') }}</li>
+                                    <li class="font-text-footer">{{ $t('search_branch') }}</li>
                                 </ul>
                             </div>
                         </div>
@@ -622,12 +699,13 @@
                 <div class="col-3 pe-5">
                     <div class="pe-5">
                         <img class="mb-4" style="max-height: 60px;" src="/images/logo/img-text-advice.png" alt="text-img-adviceiStore">
-                        <p class="font-text-footer">Advice iStore เป็นร้านค้าออนไลน์ของ 
+                        <!-- <p class="font-text-footer">Advice iStore เป็นร้านค้าออนไลน์ของ 
                         บริษัท แอดไวซ์ ไอที อินฟินิท จำกัด (มหาชน) 
                         พบกับสินค้าและอุปกรณ์เสริมจากแบรนด์ชั้นนำ ที่เราคัดสรรมาอย่างดี</p>
                         <p class="font-text-footer">พร้อมโปรโมชั่นพิเศษมากมาย
                         และข้อเสนอที่คุณห้ามพลาดเพลิดเพลินกับการช้อปปิ้ง
-                        ที่ปลอดภัยและรวดเร็ว พร้อมบริการลูกค้าและการจัดส่งที่เป็นเลิศ ขอให้เราได้ดูแลคุณ</p>
+                        ที่ปลอดภัยและรวดเร็ว พร้อมบริการลูกค้าและการจัดส่งที่เป็นเลิศ ขอให้เราได้ดูแลคุณ</p> -->
+                        <p class="font-text-footer">{{ $t('footer_wording') }}<br>{{ $t('footer_wording_2') }}</p>
                     </div>
                 </div>
                 <div class="col-3">
@@ -647,12 +725,12 @@
                 <div class="col-3">
                     <h3 class="text-light">{{ $t('help') }}</h3>
                     <ul class="footer-menu">
-                        <li class="font-text-footer">ติดต่อเรา</li>
-                        <li class="font-text-footer">ช่วยเหลือด้านเทคนิค</li>
-                        <li class="font-text-footer">การคืนสินค้าและขอคืนเงินออนไลน์</li>
-                        <li class="font-text-footer">การจัดส่งสินค้า</li>
-                        <li class="font-text-footer">ช่องทางชำระเงิน</li>
-                        <li class="font-text-footer">ค้นหาสาขาใกล้ฉัน</li>
+                        <li class="font-text-footer">{{ $t('contact_us_service') }}</li>
+                        <li class="font-text-footer">{{ $t('technical_support') }}</li>
+                        <li class="font-text-footer">{{ $t('returns_and_refunds') }}</li>
+                        <li class="font-text-footer">{{ $t('delivery_service') }}</li>
+                        <li class="font-text-footer">{{ $t('payment_methods') }}</li>
+                        <li class="font-text-footer">{{ $t('search_branch') }}</li>
                     </ul>
                 </div>
                 <div class="col-3">
@@ -720,7 +798,7 @@ import { useI18n } from 'vue-i18n'
 import AirDatepicker from 'air-datepicker';
 import localeEn from 'air-datepicker/locale/en';
 
-const device_size = ref(0)
+const viewport = useViewport();
 
 const { t, locale } = useI18n();
 const languageWeb = ref([])
@@ -737,6 +815,13 @@ const routeProduct = ref('')
 const userLogin = useCookie('user-token')
 const dataCookieProduct = useCookie('data-product');
 const numCart_ = numCart();
+
+const menuLevel2 = ref([])
+const menuLevel3 = ref([])
+
+const currentLevel = ref(1);
+const currentCategory2 = ref('');
+const currentCategory3 = ref('');
 
 numCart_.value = dataCookieProduct.value != undefined ? dataCookieProduct.value.reduce((sum, item) => sum + item.qty, 0) : 0
 
@@ -843,9 +928,22 @@ const clearWrapperNavbar = () => {
 const openMenuMobile = () => {
     document.body.classList.toggle('lock-page')
     document.getElementById('wrapper_menu_mobile').classList.toggle('show')
-    document.getElementById('content_menu_mobile').classList.toggle('show')
     document.getElementById('language_mobile').classList.remove('active')
     document.getElementById('form_content_language').classList.remove('show')
+    setTimeout(() => {
+        document.querySelectorAll('.menu-level').forEach((el) => {
+            el.classList.remove('active', 'prev');
+        });
+        const level1 = document.getElementById('level1');
+        if (level1) {
+            level1.classList.add('active');
+        }
+    }, 500);
+    currentLevel.value = 1;
+    currentCategory2.value = '';
+    currentCategory3.value = '';
+    menuLevel2.value = [];
+    menuLevel3.value = [];
 }
 
 const menuLanguageMobile = () => {
@@ -858,8 +956,21 @@ const closeMenuMobile = () => {
     document.getElementById('language_mobile').classList.remove('active')
     document.getElementById('form_content_language').classList.remove('show')
     document.getElementById('wrapper_menu_mobile').classList.remove('show')
-    document.getElementById('content_menu_mobile').classList.remove('show')
     document.getElementById('hamburger_menu_mobile').classList.remove('active')
+    setTimeout(() => {
+        document.querySelectorAll('.menu-level').forEach((el) => {
+            el.classList.remove('active', 'prev');
+        });
+        const level1 = document.getElementById('level1');
+        if (level1) {
+            level1.classList.add('active');
+        }
+    }, 500);
+    currentLevel.value = 1;
+    currentCategory2.value = '';
+    currentCategory3.value = '';
+    menuLevel2.value = [];
+    menuLevel3.value = [];
 }
 
 const closeMenuLanguageMobile = () => {
@@ -867,15 +978,43 @@ const closeMenuLanguageMobile = () => {
     document.getElementById('form_content_language').classList.remove('show')
 }
 
+const goToLevel = (level, category = '') => {
+    const currentLevelEl = document.getElementById(`level${currentLevel.value}`);
+    const targetLevelEl = document.getElementById(`level${level}`);
+    console.log(`currentLevel: ${currentLevel.value}, targetLevel: ${level}, category: ${category}`);
+    
+    if (level > currentLevel.value) {
+        // Going forward
+        currentLevelEl.classList.remove('active');
+        currentLevelEl.classList.add('prev');
+        targetLevelEl.classList.add('active');
+        targetLevelEl.classList.remove('prev');
+    } else {
+        // Going back
+        currentLevelEl.classList.remove('active');
+        targetLevelEl.classList.remove('prev');
+        targetLevelEl.classList.add('active');
+    }
+
+    currentLevel.value = level;
+    
+    if (level === 2 && category) {
+        currentCategory2.value = category;
+        menuLevel2.value = menuGroup.value[category].menu_list;
+    } else if (level === 3 && category) {
+        currentCategory3.value = category;
+        menuLevel3.value = menuGroup.value[currentCategory2.value].menu_list_dtl[category]; 
+    }
+}
+
 const unlockPage = () => [
     document.body.classList.remove('lock-page')
 ]
 
 const updateWidth = async () => {
-    device_size.value = window.innerWidth
     setTimeout(() => {
         let getHeight = document.getElementById('nav_mobile').offsetHeight
-        document.getElementById('content_menu_mobile').style.top = `${getHeight}px`
+        document.getElementById('level1').style.top = `${getHeight}px`
     }, 0);
     
 }
@@ -906,6 +1045,20 @@ onMounted(async () => {
         dateFormat: 'dd / MM / yyyy',
         autoClose: true,
     })
+
+    //menu mobile show
+    // const wrapperMenuMobile = document.getElementById('wrapper_menu_mobile');
+    // const checkMenuMobileShow = () => {
+    //     if (wrapperMenuMobile && wrapperMenuMobile.classList.contains('show')) {
+    //         document.body.classList.add('lock-page');
+    //     } else {
+    //         document.body.classList.remove('lock-page');
+    //     }
+    // };
+    // const observer = new MutationObserver(checkMenuMobileShow);
+    // if (wrapperMenuMobile) {
+    //     observer.observe(wrapperMenuMobile, { attributes: true, attributeFilter: ['class'] });
+    // }
 
     let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalRegistor')) // Returns a Bootstrap modal instance
     // Show or hide:

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
     import Swiper from 'swiper/bundle';
-
+    import { useI18n } from 'vue-i18n'
+    const { t, locale } = useI18n();
     const route = useRoute()
     const category = ref(route.params.category)
     const sub_category = ref(route.params.sub_category)
@@ -425,15 +426,15 @@
                         <h1 class="text-subject-productdetail">{{ productModel }}</h1>
                         <hr>
                         <div class="mb-4">
-                            <h3 class="mb-1 text-special-price">ราคาพิเศษ: ฿{{ FormatPrice(productPrice) }} </h3>
-                            <h5 class="mb-1 font-bold-22 color-gray">ราคาปกติ: ฿{{ FormatPrice(productPrice) }} </h5>
-                            <p class="mb-1 font-22 color-gray">หรือ</p>
-                            <p class="mb-1 font-22 color-gray">ราคา ฿4,580 /เดือน | สำหรับผ่อนชำระ 0% 10 เดือน*</p>      
+                            <h3 class="mb-1 text-special-price">{{ $t('special_price') }}: ฿{{ FormatPrice(productPrice) }} </h3>
+                            <h5 class="mb-1 font-bold-22 color-gray">{{ $t('regular_price') }}: ฿{{ FormatPrice(productPrice) }} </h5>
+                            <p class="mb-1 font-22 color-gray">{{ $t('or') }}</p>
+                            <p class="mb-1 font-22 color-gray">{{ $t('price') }} ฿4,580 /{{ $t('month') }} | {{ $t('for_installment') }} 0% 10 {{ $t('month') }}*</p>      
                         </div>
                         <hr>
                         <div v-for="spec_master in arrSpecMaster" class="mb-4">
                             <div v-if="spec_master.spec_name == 'color'">
-                                <h3 class="">เลือกสี: <span class="color-gray font-22" style="font-weight: 400;">{{ setSpecSeleted('color') }}</span></h3>
+                                <h3 class="">{{ $t('select_color') }}: <span class="color-gray font-22" style="font-weight: 400;">{{ setSpecSeleted('color') }}</span></h3>
                                 <div class="mb-4 position-relative">
                                     <div v-if="!wrapperSelectColor" id="wrapper-color" class="wrapper-select-product"></div>
                                     <div class="form-color-selector">
@@ -444,7 +445,7 @@
                                 </div>
                             </div>
                             <div v-if="spec_master.spec_name == 'processor'">
-                                <h3 class="">โปรเซสเซอร์: <span class="color-gray font-22" style="font-weight: 400;">{{ setSpecSeleted('processor') }}</span></h3>
+                                <h3 class="">{{ $t('processor') }}: <span class="color-gray font-22" style="font-weight: 400;">{{ setSpecSeleted('processor') }}</span></h3>
                                 <div class="mb-4 position-relative">
                                     <div v-if="!wrapperSelectProcessor" id="wrapper-processor" class="wrapper-select-product"></div>
                                     <div class="form-selector-processor">
@@ -457,7 +458,7 @@
                                 </div>
                             </div>
                             <div v-if="spec_master.spec_name == 'memory'">
-                                <h3 class="">เลือกหน่วยความจำ: <span class="color-gray font-22" style="font-weight: 400;">{{ setSpecSeleted('memory') }}</span></h3>
+                                <h3 class="">{{ $t('memory') }}: <span class="color-gray font-22" style="font-weight: 400;">{{ setSpecSeleted('memory') }}</span></h3>
                                 <div class="mb-4 position-relative">
                                     <div v-if="!wrapperSelectMemory" id="wrapper-memory" class="wrapper-select-product"></div>
                                     <div class="form-product-selector">
@@ -482,7 +483,7 @@
                                 </div>
                             </div>
                             <div v-if="spec_master.spec_name == 'storage'">
-                                <h3 class="">เลือกพื้นที่จัดเก็บข้อมูล: <span class="color-gray font-22" style="font-weight: 400;">{{ setSpecSeleted('storage') }}</span></h3>
+                                <h3 class="">{{ $t('storage') }}: <span class="color-gray font-22" style="font-weight: 400;">{{ setSpecSeleted('storage') }}</span></h3>
                                 <div class="mb-4 position-relative">
                                     <div v-if="!wrapperSelectStorage" id="wrapper-storage" class="wrapper-select-product"></div>
                                     <div class="form-product-selector">
@@ -497,7 +498,7 @@
                         </div>
                         <hr>
                         <div class="mb-4">
-                            <h3 class="">จำนวน:</h3>
+                            <h3 class="">{{ $t('quantity') }}:</h3>
                             <div class="form-control-quantity">
                                 <button @click="qtyProduct--" class="item-quantity" :disabled="qtyProduct == 1"><i class="fa-solid fa-minus"></i></button>
                                 <h1 class="m-0">{{ qtyProduct }}</h1>
@@ -506,7 +507,7 @@
                         </div>
                         <hr>
                         <div class="mb-4">
-                            <h3 class="">รับความคุ้มครอง AppleCare+:</h3>
+                            <h3 class="">{{ $t('applecare_cover') }}:</h3>
                             <div v-if="category == 'mac'" class="form-checkbox-applecare mb-md-2">
                                 <div class="form-check d-flex align-items-center gap-3">
                                     <input class="form-check-input checkbox-applecare mb-3" type="checkbox" value="" id="checkboxapplecare">
@@ -519,7 +520,7 @@
                                     </div>
                                     <p class="m-0 font-22 color-gray">เพิ่มความคุ้มครอง รวมถึงอุบัติเหตุ 3 ปี</p>
                                     <p class="m-0 font-22">
-                                        <a class="color-bluedark font-20 link-none-underlines" href="#">ดูรายละเอียดเพิ่มเติม</a>
+                                        <a class="color-bluedark font-20 link-none-underlines" href="#">{{ $t('learn_more') }}</a>
                                     </p>
                                 </div>
                             </div>
@@ -535,7 +536,7 @@
                                     </div>
                                     <p class="m-0 font-22 color-gray">เพิ่มความคุ้มครอง รวมถึงอุบัติเหตุ 3 ปี</p>
                                     <p class="m-0 font-22">
-                                        <a class="color-bluedark font-20 link-none-underlines" href="#">ดูรายละเอียดเพิ่มเติม</a>
+                                        <a class="color-bluedark font-20 link-none-underlines" href="#">{{ $t('learn_more') }}</a>
                                     </p>
                                 </div>
                             </div>
@@ -543,14 +544,14 @@
                         <hr>
                         <div class="mb-4">
                             <h3 class="">Trade-in เก่าแลกใหม่:</h3>
-                            <p class="mb-2 font-22 color-graydark">Apple Trade In ให้คุณนำอุปกรณ์เครื่องปัจจุบันมาแลกเป็นเครดิตอย่างคุ้มค่าเพื่อนำไปใช้ซื้ออุปกรณ์เครื่องใหม่คุณสามารถแลกอุปกรณ์ได้ทั้งทางออนไลน์หรือที่ Advice</p>
+                            <p class="mb-2 font-22 color-graydark">{{ $t('advice_istore_tradein') }}</p>
                             <p class="m-0 font-bold-22">
-                                <a class="color-bluedark font-22 link-none-underlines" href="#">ดูข้อมูล Trade-in เพิ่มเติม</a>
+                                <a class="color-bluedark font-22 link-none-underlines" href="#">{{ $t('view_tradein_more') }}</a>
                             </p>
                         </div>
                         <hr>
                         <div class="mb-4">
-                            <h3 class="">รายละเอียดการจัดส่งและชำระเงิน:</h3>
+                            <h3 class="">{{ $t('delivery_and_payment_details') }}:</h3>
                             <!-- <ul class="installment-wrapper">
                                 <li class="item-installment">
                                     <img width="auto" height="38px" class="" src="~/assets/img/icon/Installmentzero.png" alt="img-Installmentzero">
@@ -579,7 +580,7 @@
                                     <div class="card-installment">
                                         <div class="d-flex align-items-center" style="gap: 12px;">
                                             <img class="icon-installment-zero" src="https://img.advice.co.th/images_nas/iStore/icon/Installment_gray.png" alt="icon-installment">
-                                            <h3 class="m-0">ออนไลน์</h3>
+                                            <h3 class="m-0">{{ $t('online') }}</h3>
                                         </div>
                                         <hr class="my-2" style="border-style: dashed;">
                                         <ul class="bank-list">
@@ -632,7 +633,7 @@
                                     <div class="card-installment">
                                         <div class="d-flex align-items-center" style="gap: 12px;">
                                             <img class="icon-installment-zero" src="https://img.advice.co.th/images_nas/iStore/icon/Installment_gray.png" alt="icon-installment">
-                                            <h3 class="m-0">สาขา</h3>
+                                            <h3 class="m-0">{{ $t('branch') }}</h3>
                                         </div>
                                         <hr class="my-2" style="border-style: dashed;">
                                         <ul class="bank-list">
@@ -721,7 +722,7 @@
                     </div>
                 </div>
                 <div class="mt-5 mb-1">
-                    <h3 class="">อุปกรณ์เสริม:</h3>
+                    <h3 class="">{{ $t('accessories') }}:</h3>
                     <div class="overflow-hidden form-swiper-accessories" style="border-radius: 8px;background: #F2F2F7;">
                         <div class="row-swiper m-2">
                             <div class="swiper swiper-product-wrapper swiper-content-accessories">
@@ -738,8 +739,8 @@
                 <div class="my-5 pb-5">
                     <div class="form-control-detailpro">
                         <ul class="form-menudetails">
-                            <li class="menu-detail">ภาพรวมสินค้า</li>
-                            <li class="menu-detail">คุณสมบัติ</li>
+                            <li class="menu-detail">{{ $t('overview') }}</li>
+                            <li class="menu-detail">{{ $t('specification') }}</li>
                         </ul>
                         <hr class="m-0">
                     </div>
@@ -756,7 +757,7 @@
                     </div> -->
                 </div>
                 <div class="my-5 pb-5 position-relative">
-                    <h1 class="text-subject">สินค้าแนะนำ</h1>
+                    <h1 class="text-subject">{{ $t('recommended_products') }}</h1>
                     <div class="overflow-hidden">
                         <div class="row-swiper m-2">
                             <div class="swiper d-flex align-items-center swiper-content-recommend p-1">

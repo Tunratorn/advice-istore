@@ -1,10 +1,13 @@
 <script lang="ts" setup>
     import Swiper from 'swiper/bundle';
+    import { useI18n } from 'vue-i18n'
+    const { t, locale } = useI18n();
     const userToken = useCookie('user-token')
     const pathLogin_ = pathLogin()
     const dataCookieProduct = useCookie('data-product');
     const arrProduct = ref([])
     const data_combineOrders = ref([])
+    const isMobile = ref(false)
 
     const getProductCart = async () => {
         let arrCode = []
@@ -95,6 +98,12 @@
         await swiperRecommend()
         await combineOrders()
 
+        const checkScreen = () => {
+            isMobile.value = window.innerWidth <= 768
+        }
+
+        checkScreen()
+        window.addEventListener('resize', checkScreen)
         // let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalAppleCare')) // Returns a Bootstrap modal instance
         // Show or hide:
         // modal.show();
@@ -113,9 +122,12 @@
                         </div>
                         <div class="p-4 p-md-5">
                             <div class="d-flex justify-content-center align-items-center flex-column gap-2">
-                                <img class="logo-applecare-cart" width="110px" src="~/assets/img/icon/AppleCare.png" alt="applecare-img">
-                                <span class="font-25 text-center">AppleCare+ สำหรับ iPhone 15 Pro Max ( แผน 2 ปี )</span>
-                                <div class="group-price-applecare">
+                                <img class="logo-applecare-cart mb-2" width="110px" src="~/assets/img/icon/AppleCare.png" alt="applecare-img">
+                                <div class="d-flex flex-column align-items-center">
+                                    <span class="font-25 text-center mb-0">AppleCare+ สำหรับ</span>
+                                    <span class="font-25 text-center mb-0">iPhone 15 Pro Max ( แผน 2 ปี )</span>
+                                </div>
+                                <div class="group-price-applecare mt-0">
                                     <h3 class="m-0">฿6,110.00</h3>
                                     <button class="btn-add-applecare">เพิ่ม</button>
                                 </div>
@@ -138,12 +150,18 @@
             </div>
         </div>
         
-        <section v-if="arrProduct.length > 0" class="bg-white">
-            <div class="container-fluid pt-4 pb-5">
-                <div class="mb-5">
-                    <h1 class="text-subject-productdetail">ตะกร้าสินค้า</h1>
-                    <div class="form-list-productcart p-1 px-sm-3 px-md-5 pt-3">
-                        <div v-for="itemProduct in arrProduct" class="list-product-cart mb-5">
+        <section class="mb-1" v-if="isMobile" >
+            <div class="d-flex align-items-center gap-3 bg-white p-2 ps-4">
+                <i data-v-d7a9db99="" class="fa-solid fa-angle-left" data-v-02281a80="" style="font-size: clamp(16px,2vw,18px);"></i>
+                <h1 class="text-subject-productdetail mb-0">{{ $t('cart') }}</h1>
+            </div>
+        </section>
+        <section v-if="arrProduct.length > 0" class="bg-page-cartproduct">
+            <div class="container-fluid content-cartproduct pt-md-4 pb-md-5">
+                <div class="mb-md-5">
+                    <h1 v-if="!isMobile" class="text-subject-productdetail mb-0 px-md-5">{{ $t('cart') }}</h1>
+                    <div class="form-list-productcart mt-1 mb-2 px-3 px-sm-3 px-md-5 pt-3 bg-white">
+                        <div v-for="itemProduct in arrProduct" class="list-product-cart pb-2">
                             <div class="wrapper-productcart">
                                 <div class="box-product-cart">
                                     <img v-if="itemProduct.product_img" class="img-product-cart" :src="itemProduct.product_img" alt="product-img" srcset="">
@@ -152,17 +170,20 @@
                                     <div class="d-flex justify-content-between">
                                         <ul class="m-0 p-0">
                                             <li class="text-name-productcart">{{ itemProduct.product_name }}</li>
-                                            <li class="text-price-productcart">฿{{ FormatPrice(itemProduct.sale_price) }}</li>
+                                            <li class="text-price-productcart">฿{{ FormatPriceDicemal(itemProduct.sale_price) }}</li>
                                             <li class="d-flex align-items-center">
-                                                <span class="text-detail-install">฿4,580 /เดือน</span>
+                                                <span class="text-detail-install">฿4,580 /{{ $t('month') }}</span>
                                                 <span class="mx-2" style="display:block;width: 1px;height: 16px;background: #C7C7CC;"></span>
-                                                <span class="text-detail-install">สำหรับผ่อนชำระ 0% 10 เดือน*</span>
+                                                <span class="text-detail-install">{{ $t('for_installment') }} 0% 10 {{ $t('month') }}*</span>
                                             </li>
                                         </ul>
                                         <div class="d-flex align-items-center gap-2 gap-sm-3">
-                                            <button @click="minusQty(itemProduct.code)" class="btn-qty-product">
+                                            <button v-if="itemProduct.qty > 1" @click="minusQty(itemProduct.code)" class="btn-qty-product">
                                                 <i class="color-gray fa-solid fa-minus"></i>
                                             </button>
+                                            <div v-else class="d-flex align-items-center justify-content-center" style="width: 34px;height: 34px;">
+                                                <IconTrash @click="minusQty(itemProduct.code)" class="icon-trash"></IconTrash>
+                                            </div>
                                             <input class="input-product-qty" type="text" :value="`${itemProduct.qty}`" disabled>
                                             <button @click="plusQty(itemProduct.code)" class="btn-qty-product">
                                                 <i class="color-gray fa-solid fa-plus"></i>
@@ -170,10 +191,11 @@
                                         </div>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center">
-                                        <NuxtLink class="link-checkdata-payment d-flex align-items-center gap-1">ดูข้อมูลการผ่อนชำระเพิ่มเติม
+                                        <NuxtLink class="link-checkdata-payment d-flex align-items-center gap-1">
+                                            {{ $t('learn_more_about_installment') }}
                                             <i class="fa-solid fa-angle-right" style="font-size: 12px;color: #0A84FF;"></i>
                                         </NuxtLink>
-                                        <span class="link-checkdata-payment">รับสินค้าที่สาขา</span>
+                                        <span class="link-checkdata-payment">{{ $t('pick_up_at_store') }}</span>
                                     </div>
                                 </div>
                             </div>
@@ -188,12 +210,13 @@
                                                 <li class="text-detail-applecare">บริการซ่อมที่ผ่านการรับรองจาก Apple ซึ่งใช้อะไหล่แท้ของ Apple</li>
                                                 <li class="text-detail-applecare">สิทธิพิเศษในการติดต่อกับผู้เชี่ยวชาญของ Apple</li>
                                             </ul>
-                                            <NuxtLink class="link-checkdata-payment d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#modalAppleCare">ดูข้อมูลเพิ่มเติม
+                                            <NuxtLink class="link-checkdata-payment d-flex align-items-center gap-1" data-bs-toggle="modal" data-bs-target="#modalAppleCare">
+                                                {{ $t('learn_more') }}
                                                 <i class="fa-solid fa-angle-right" style="font-size: 12px;color: #0A84FF;"></i>
                                             </NuxtLink>
                                         </div>
-                                        <button class="btn-add-applecare">เพิ่ม</button>
-                                        <button class="btn-add-applecare btn-cancel-applecare" hidden>ยกเลิก</button>
+                                        <button class="btn-add-applecare">{{ $t('add') }}</button>
+                                        <button class="btn-add-applecare btn-cancel-applecare" hidden>{{ $t('cancel') }}</button>
                                     </div>
                                 </div>
                             </div>
@@ -297,39 +320,39 @@
 
                     </div>
 
-                    <div class="form-control-coupon">
-                        <div class="p-4" style="width: 100%;max-width: 1000px;">
+                    <div class="form-control-coupon mt-md-5 bg-white">
+                        <div class="p-md-4" style="width: 100%;max-width: 1000px;">
                             <div class="d-flex align-items-center gap-2">
                                 <IconCoupon></IconCoupon>
-                                <h3 class="m-0 mt-1 font-bold-24">โค้ดส่วนลด</h3>
+                                <h3 class="m-0 mt-1 font-bold-24">{{ $t('discount_code') }}</h3>
                             </div>
                             <div class="d-flex align-items-center gap-2 mt-2 mb-3">
-                                <input type="text" class="form-control font-20 input-login" id="coupon" placeholder="กรอกโค้ดส่วนลด">
-                                <button class="btn-coupon">ใช้โค้ด</button>
+                                <input type="text" class="form-control font-20 input-login" id="coupon" :placeholder="$t('placeholder_discount_code')">
+                                <button class="btn-coupon">{{ $t('apply_code') }}</button>
                             </div>
                             <div class="d-flex align-items-center gap-2">
                                 <IconReceipt></IconReceipt>
-                                <h3 class="m-0 mt-1 font-bold-24">สรุปคำสั่งซื้อ</h3>
+                                <h3 class="m-0 mt-1 font-bold-24">{{ $t('order_summary') }}</h3>
                             </div>
                             <ul class="p-0">
                                 <li class="list-bill my-2">
-                                    <span class="font-bold-22">คำสั่งซื้อสินค้าทั้งหมด ({{ data_combineOrders['sum_qty'] }} ชิ้น)</span>
-                                    <span class="font-bold-22">฿{{ FormatPrice(data_combineOrders['sum_price']) }}</span>
+                                    <span class="font-bold-22">{{ $t('order_total') }} ({{ data_combineOrders['sum_qty'] }} ชิ้น)</span>
+                                    <span class="font-bold-22">฿{{ FormatPriceDicemal(data_combineOrders['sum_price']) }}</span>
                                 </li>
                                 <li class="list-bill my-2">
-                                    <span class="font-bold-22">โค้ดส่วนลด</span>
-                                    <span v-if="data_combineOrders['discount'] > 0" class="font-bold-22 color-red">-฿{{ FormatPrice(data_combineOrders['discount']) }}</span>
+                                    <span class="font-bold-22">{{ $t('discount_code') }}</span>
+                                    <span v-if="data_combineOrders['discount'] > 0" class="font-bold-22 color-red">-฿{{ FormatPriceDicemal(data_combineOrders['discount']) }}</span>
                                     <span v-else class="font-bold-22">-</span>
                                 </li>
                                 <hr>
                                 <li class="list-bill">
-                                    <span class="font-bold-24 color-bluedark">ยอดรวมสุทธิทั้งหมด:</span>
-                                    <span class="font-bold-24 color-bluedark">฿{{ FormatPrice(data_combineOrders['order_price']) }}</span>
+                                    <span class="font-bold-24 color-bluedark">{{ $t('total_payment') }}:</span>
+                                    <span class="font-bold-24 color-bluedark">฿{{ FormatPriceDicemal(data_combineOrders['order_price']) }}</span>
                                 </li>
-                                <li class="font-18 color-gray">(ราคานี้รวมภาษีมูลค่าเพิ่มแล้ว)</li>
+                                <li class="font-18 color-gray">({{ $t('include_vat') }})</li>
                             </ul>
                             <div class="d-flex justify-content-center mt-5 mb-4">
-                                <button @click="checklogin" class="btn-pay" :disabled="arrProduct.length == 0">ชำระเงิน</button>
+                                <button @click="checklogin" class="btn-pay" :disabled="arrProduct.length == 0">{{ $t('checkout') }}</button>
                             </div>
                             <!-- <div class="d-flex justify-content-center mt-3">
                                 <button class="btn-adjust" :disabled="arrProduct.length == 0"><IconDocument></IconDocument>ขอใบเสนอราคา</button>
@@ -356,29 +379,29 @@
                         <button class="btn-swiper btn-swiper-next swiper-recommend-next"><i class="fa-solid fa-angle-right" style="font-size:16px;" data-v-02281a80=""></i></button>
                     </div>
                 </div> -->
-                <div class="form-detail-conditioncart mb-5">
+                <div class="form-detail-conditioncart mb-md-5 bg-white pb-5 pb-md-0">
                     <div class="d-flex gap-2">
                         <IconBoxalt></IconBoxalt>
                         <div class="ps-1">
-                            <h4 class="m-0 line-height-26 font-bold-24">รับสินค้าที่ Advice ใกล้บ้านคุณ</h4>
-                            <p class="m-0 color-gray font-24">เรามีสาขามากกว่า 350 สาขา ทั่วประเทศไทย</p>
-                            <NuxtLink class="font-20 color-bluedark link-none-underlines" to="/">ดูรายละเอียดเพิ่มเติม</NuxtLink>
+                            <h4 class="m-0 line-height-26 font-bold-24">{{ $t('pick_up_at_advice_store_near_you') }}</h4>
+                            <p class="m-0 color-gray font-24">{{ $t('we_have_over_350_branches') }}</p>
+                            <NuxtLink class="font-20 color-bluedark link-none-underlines" to="/">{{ $t('learn_more') }}</NuxtLink>
                         </div>
                     </div>
                     <div class="box-or-shop mx-md-5">
                         <span class="border-or"></span>
-                        <span class="font-18 position-absolute" style="color: #C7C7CC;background: #ffff;padding: 5px;">หรือ</span>
+                        <span class="font-18 position-absolute" style="color: #C7C7CC;background: #ffff;padding: 5px;">{{ $t('or') }}</span>
                     </div>
                     <div class="d-flex gap-2">
                         <IconShoppingFast></IconShoppingFast>
                         <div class="ps-1">
-                            <h4 class="m-0 line-height-26 font-bold-24">จัดส่งทันที:
-                                <span class="color-gray font-24">เมื่อสั่งซื้อก่อน 12.00 น.</span>
+                            <h4 class="m-0 line-height-26 font-bold-24">{{ $t('deliver_now') }}:
+                                <span class="color-gray font-24">{{ $t('deliver_now_order_before_12pm') }}</span>
                             </h4>
-                            <h4 class="m-0 line-height-26 font-bold-24">จัดส่งปกติ:
-                                <span class="color-gray font-24">2-3 วันทำการ</span>
+                            <h4 class="m-0 line-height-26 font-bold-24">{{ $t('standard_delivery') }}:
+                                <span class="color-gray font-24">{{ $t('standard_delivery_2_3_days') }}</span>
                             </h4>
-                            <NuxtLink class="font-20 color-bluedark link-none-underlines" to="/">ดูรายละเอียดเพิ่มเติม</NuxtLink>
+                            <NuxtLink class="font-20 color-bluedark link-none-underlines" to="/">{{ $t('learn_more') }}</NuxtLink>
                         </div>
                     </div>
                 </div>
@@ -440,6 +463,7 @@
         width: 100%;
         border-bottom: 1px solid #ccc;
         padding-bottom: 2.5rem;
+        margin-bottom: 3rem;
     }
 
     .btn-qty-product {
@@ -486,7 +510,7 @@
     }
 
     .link-checkdata-payment {
-        font-size: clamp(12px, 2vw, 18px);
+        font-size: clamp(15px, 2vw, 18px);
         font-weight: 400;
         line-height: normal;
         text-decoration: none;
@@ -511,6 +535,11 @@
         margin: 0.5rem;
     }
 
+    .icon-trash:hover {
+        fill: #007AFF;
+        cursor: pointer;
+    }
+
     @media screen and (max-width: 768px) {
         .group-price-applecare {
             display: flex;
@@ -519,6 +548,15 @@
             justify-content: center;
             gap: 10px;
             width: 100%;
+        }
+
+        .list-product-cart:nth-last-child(n+2)::after {
+            content: '';
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
         }
     }
 </style>

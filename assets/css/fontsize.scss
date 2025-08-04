@@ -6,16 +6,16 @@
         line-height: normal;
 
         @if $i > 50 {
-            font-size: clamp(#{$i - 4}px, 5vw, #{$i}px);
+            font-size: clamp(#{$i - 2}px, 5vw, #{$i}px);
         }
         @if $i >= 30 and $i <= 50 {
-            font-size: clamp(#{$i - 4}px, 4vw, #{$i}px);
+            font-size: clamp(#{$i - 2}px, 4vw, #{$i}px);
         }
         @if $i >= 20 and $i < 30 {
-            font-size: clamp(#{$i - 4}px, 3vw, #{$i}px);
+            font-size: clamp(#{$i - 2}px, 3vw, #{$i}px);
         }
         @if $i < 20 {
-            font-size: clamp(#{$i - 4}px, 2vw, #{$i}px);
+            font-size: clamp(#{$i - 2}px, 2vw, #{$i}px);
         }
     }
 
@@ -28,16 +28,16 @@
         line-height: normal;
 
         @if $i > 50 {
-            font-size: clamp(#{$i - 4}px, 5vw, #{$i}px);
+            font-size: clamp(#{$i - 2}px, 5vw, #{$i}px);
         }
         @if $i >= 30 and $i <= 50 {
-            font-size: clamp(#{$i - 4}px, 4vw, #{$i}px);
+            font-size: clamp(#{$i - 2}px, 4vw, #{$i}px);
         }
         @if $i >= 20 and $i < 30 {
-            font-size: clamp(#{$i - 4}px, 3vw, #{$i}px);
+            font-size: clamp(#{$i - 2}px, 3vw, #{$i}px);
         }
         @if $i < 20 {
-            font-size: clamp(#{$i - 4}px, 2vw, #{$i}px);
+            font-size: clamp(#{$i - 2}px, 2vw, #{$i}px);
         }
     }
 

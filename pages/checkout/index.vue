@@ -12,6 +12,33 @@
     const address_papertax = ref(null)
     const emailEtax = ref('')
     const isViewsize = ref('')
+    const isMobile = ref(false)
+    const optionsList = ref([])
+    const searchBranch = ref('')
+    const showOptions = ref(false)
+    const filteredOptions = ref([])
+    const containerSearchBranch = ref(null)
+    const branchSelected = ref([])
+    const type_delivery = ref(null)
+    const data_delivery = ref(null)
+    const arr_delivery_type = ref({})
+    const arrDataDelivery = [
+        {
+            'type': 'จัดส่งแบบปกติ',
+            'delivery': 'kerry',
+            'images': 'https://img.advice.co.th/images_nas/iStore/delivery/Kerrry_Express_deli.png'
+        },
+        {
+            'type': 'จัดส่งแบบปกติ',
+            'delivery': 'dhl',
+            'images': 'https://img.advice.co.th/images_nas/iStore/delivery/DHL_deli.png'
+        },
+        {
+            'type': 'จัดส่งแบบปกติ',
+            'delivery': 'trantect',
+            'images': 'https://img.advice.co.th/images_nas/iStore/delivery/trantect_deli.png'
+        }
+    ]
 
     // Element value 
     const radio_branch = ref(null)
@@ -139,6 +166,26 @@
         isReceive.value = 'branch'
         arrBranch.value = []
         search_addressBranch.value = ''
+        setTimeout(() => {
+            setReceiving('branch')
+            
+        }, 500);
+    }
+
+    const setReceiving = async (type: string) => {
+        document.querySelectorAll('.form-content-shipping').forEach(el => {
+            el.style.height = "0";
+        });
+
+        if (type == 'branch') {
+            let hBranch = document.getElementById('content_branch');
+            await nextTick();
+            hBranch.style.height = `${hBranch.scrollHeight}px`;
+        } else if (type == 'delivery') {
+            let hDeli = document.getElementById('content_delivery');
+            await nextTick();
+            hDeli.style.height = `${hDeli.scrollHeight}px`;
+        }
     }
 
     const getAddressBranch = async () => {
@@ -153,8 +200,13 @@
             }
         })
 
+        optionsList.value = []
+        filteredOptions.value = []
         if (JSON.parse(respon_branch).status == "success") {
             arrBranch.value = JSON.parse(respon_branch).data
+            optionsList.value = JSON.parse(respon_branch).data
+            filteredOptions.value = JSON.parse(respon_branch).data
+          
         } else {
             textFormBranch.value = 'ไม่พบข้อมูล'
         }
@@ -163,16 +215,17 @@
 
     const openModalBranch = async (type: String) => {
         address_branch.value = null
+        branchSelected.value = []
         arrBranch.value = []
         textFormBranch.value = 'Branch'
         let modal_branch = bootstrap.Modal.getOrCreateInstance(document.getElementById('BranchModal')) // Returns a Bootstrap modal instance
         isReceive.value = 'branch'
+        setReceiving('branch')
         if (item_branch.value.length < 1) {
             modal_branch.show()
             isReceive.value = ''
             radio_branch.value.checked = false
-        }
-
+        } 
         if (type == 'edit_branch') {
             modal_branch.show()
         }
@@ -257,6 +310,7 @@
 
     const addressDelivery = () => {
         isReceive.value = 'delivery'
+        setReceiving('delivery')
         if (address_delivery.value == null) {
             let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('AddressModal')) // Returns a Bootstrap modal instance
             modal.show();
@@ -363,6 +417,10 @@
 
         radio_delivery.value.checked = true
         isReceive.value = 'delivery'
+
+        setTimeout(() => {
+            setReceiving('delivery')
+        }, 500);
     }
 
     const selectAddressTax = async () => {
@@ -451,9 +509,89 @@
         }
     }
 
-    const updateWidth = async () => {
-        isViewsize.value = window.innerWidth >= 992 ? 'desktop' : 'mobile';
+    const openDeliveryContent = async (id: string) => {
+        const el = document.getElementById(id);
+        if (el) {
+            // Open the selected delivery content
+            el.style.height = `${el.scrollHeight}px`;
+        }
+        // Close all other delivery contents
+        document.querySelectorAll('.delivery-content').forEach(content => {
+            if (content.id !== id) {
+                content.style.height = '0';
+            }
+        });
+
+        document.querySelectorAll('.delivery-content-radio').forEach(radio => {
+            const parentContent = radio.closest('.delivery-content');
+            if (parentContent && parentContent.id !== id) {
+                radio.checked = false;
+            }
+        });
     }
+
+    const closeDeliveryContent = async () => {
+        let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('addTypeDelivery'));
+        modal.hide();
+        await nextTick();
+        document.querySelectorAll('.delivery-radio').forEach(el => {
+            el.checked = false;
+        });
+        document.querySelectorAll('.delivery-content-radio').forEach(el => {
+            el.checked = false;
+        });
+        document.querySelectorAll('.delivery-content').forEach(el => {
+            el.style.height = '0';
+        });
+    }
+
+    const setDelivery = async () => {
+        closeDeliveryContent()
+        let img_delivery = ''
+        // Find the image URL from arrDataDelivery based on selected data_delivery
+        const selectedDelivery = arrDataDelivery.find(item => item.delivery === data_delivery.value)
+        if (selectedDelivery) {
+            img_delivery = selectedDelivery.images
+        }
+        arr_delivery_type.value = {
+            'delivery': data_delivery.value,
+            'type_delivery': type_delivery.value,
+            'images': img_delivery
+        }
+        console.log('Delivery selected:', arr_delivery_type.value.delivery, 'Type:', arr_delivery_type.value.type_delivery);
+        setReceiving('delivery')
+    }
+
+    // Filter options based on input
+    // const filterOptions = () => {
+    //     const filter = searchBranch.value.toLowerCase()
+    //     filteredOptions.value = optionsList.value.filter(option =>
+    //         option.toLowerCase().includes(filter)
+    //     )
+    // }
+    // Select an option dropdown
+    const selectOption = (option,index) => {
+        search_addressBranch.value = option
+        showOptions.value = false
+        branchSelected.value = arrBranch.value.filter(branch => branch.name.includes(option))
+        address_branch.value = index
+        item_branch.value.push(arrBranch.value[index])
+    }
+
+
+    const updateWidth = async () => {
+         isMobile.value = false;
+        if (window.innerWidth >= 992) {
+            isViewsize.value = 'desktop';
+        } else if (window.innerWidth < 992 && window.innerWidth >= 768) {
+            isViewsize.value = 'tablet';
+        } else {
+            isViewsize.value = 'mobile';
+            isMobile.value = true;
+        }
+    }
+
+   
 
     onMounted(async () => {
         await getProductCart()
@@ -464,9 +602,15 @@
 
         await updateWidth()
         await window.addEventListener('resize', updateWidth)
-        
-        // let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('addAddressPaperTaxModal')) // Returns a Bootstrap modal instance
+    
+        // let modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('addTypeDelivery')) // Returns a Bootstrap modal instance
         // modal.show();
+
+        document.addEventListener('click', (e) => {
+            if (!containerSearchBranch.value?.contains(e.target)) {
+                showOptions.value = false
+            }
+        })
     })
 
 </script>
@@ -478,74 +622,129 @@
             <div class="modal-dialog modal-dialog-centered" style="max-width: 650px;">
                 <div class="modal-content" style="border-radius: 20px;overflow: hidden;">
                     <div class="modal-header d-flex justify-content-center p-4">
-                        <h1 class="font-bold-28 m-0" id="BranchModalLabel">เลือกสาขาที่ต้องการรับสินค้า</h1>
+                        <h1 class="font-bold-28 m-0" id="BranchModalLabel">รับสินค้าเองใกล้บ้านคุณ</h1>
                         <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body p-4">
-                        <h5 class="text-subject mb-3">เลือกสาขา Advice iStore ที่ต้องการรับสินค้า</h5>                  
-                        <div class="input-group mb-3">
-                            <input v-model="search_addressBranch" @keyup.enter="getAddressBranch()" id="search_branch" type="text" class="form-control font-20" placeholder="ค้นหาชื่อจังหวัด , อำเภอ">
-                            <button @click="getAddressBranch()" id="btn_search_branch" :disabled="search_addressBranch == ''" class="btn btn-outline-secondary btn-branch-search" type="button">ค้นหา</button>
-                        </div>
-                        <div v-if="arrBranch.length > 0" class="mt-4">
-                            <h5 class="text-subject">สาขาที่ค้นพบ {{ arrBranch.length }} สาขา</h5>
-                            <hr>
-                        </div>
-                        <!-- <div class="row">
-                            <div class="col-6 mb-3">
-                                <select class="form-select form-input-custom" id="selectSector">
-                                    <option selected>เลือกภาค</option>
-                                    <option value="1">ภาคกลาง</option>
-                                    <option value="2">ภาคเหนือ</option>
-                                    <option value="3">ภาคตะวันออกเฉียงเหนือ</option>
-                                    <option value="3">ภาคตะวันออก</option>
-                                    <option value="3">ภาคใต้</option>
-                                </select>
-                            </div>
-                            <div class="col-6 mb-3">
-                                <select class="form-select form-input-custom" id="selectProvince">
-                                    <option selected>เลือกจังหวัด</option>
-                                </select>
-                            </div>
-                            <div class="col-12">
-                                <select class="form-select form-input-custom" id="selectBranch">
-                                    <option selected>เลือกสาขา</option>
-                                </select>
-                            </div>
-                        </div> -->
-                        <div v-if="arrBranch.length > 0" class="form-address-branch">
-                            <div v-for="(itembranch,index_branch) in arrBranch" class="form-branch-select">
-                                <input v-model="address_branch" class="form-check-input" type="radio" name="address_branch" :id="`branch${index_branch}`" :value="index_branch" hidden>
-                                <label class="form-check-label" :for="`branch${index_branch}`">
-                                    <h5 class="m-0 font-bold-22">Advice iStore - จังหวัดกำแพงเพชร</h5>
-                                    <hr>
-                                    <div class="form-data-branch">
-                                        <div class="form-control-imgbranch">
-                                            <img class="item-img-branch" :src="itembranch.picture" alt="img-branch">
-                                        </div>
-                                        <div class="pe-4">
-                                            <h5 class="m-0 mb-1 mb-sm-0 font-bold-21 line-height-20">{{ itembranch.name }}</h5>
-                                            <p class="text-data-branch mb-0">วันและเวลาทำการ: {{ itembranch.startdate1 }}</p>
-                                            <p class="text-data-branch mb-1">{{ itembranch.branch_address }}</p>
-                                            <div class="w-100 row align-items-center">
-                                                <div class="col-item-title line-height-20 text-data-branch">Tel:</div>
-                                                <div class="col-item-text line-height-20 text-data-branch">{{ itembranch.branch_tel }}</div>
-                                                <div class="col-item-title line-height-20 text-data-branch">Phone:</div>
-                                                <div class="col-item-text line-height-20 text-data-branch">{{ itembranch.branch_mobile }}</div>
-                                                <div class="col-item-title line-height-20 text-data-branch">Email:</div>
-                                                <div class="col-item-text line-height-20"><span class="font-18 color-primary">{{ itembranch.branch_email }}</span></div>
-                                                <div class="col-item-title line-height-20 text-data-branch">Website:</div>
-                                                <div class="col-item-text line-height-20"><NuxtLink class="link-none-underlines font-18 color-primary" :to="`https://${itembranch.branch_website}`" target="_blank" rel="noopener noreferrer">{{ itembranch.branch_website }}</NuxtLink></div>
-                                                <div class="col-item-title line-height-20 text-data-branch">Facebook:</div>
-                                                <div class="col-item-text line-height-20"><NuxtLink class="link-none-underlines font-18 color-primary" :to="`https://${itembranch.fanpage}`" target="_blank" rel="noopener noreferrer">{{ itembranch.fanpage }}</NuxtLink></div>
-                                            </div>
+                        <h5 class="text-subject mb-3">เลือกรับสินค้าที่สาขา<span style="color: red;">*</span></h5>         
+                        <div v-if="isViewsize !== 'desktop'">
+                            <div class="w-full max-w-xs mx-auto mb-2">
+                                <div ref="containerSearchBranch" class="w-100 h-100 position-relative" id="searchable-select-container">
+                                    <!-- The main select button/input -->
+                                    <div class="form-select-dropdown">
+                                        <input v-model="search_addressBranch" @input="getAddressBranch" @focus="showOptions = true" id="search_branch_dropdown" type="text" class="form-control font-20 input-select-dropdown" placeholder="เลือกสาขา">
+                                        <IconArrowDown class="icon-dropdown-search"></IconArrowDown>
+                                    </div>
+
+                                    <!-- Dropdown list -->
+                                    <div v-show="showOptions" id="options-list" class="custom-scrollbar-dropdown">
+                                        <!-- Options will be dynamically populated here, but we can add some for structure -->
+                                        <div v-for="(branch, index) in arrBranch" :key="index" class="p-2 hover:bg-blue-50 cursor-pointer" :data-value="branch.name" @click="selectOption(branch.name,index)">
+                                            {{ branch.name }}
                                         </div>
                                     </div>
-                                </label>
+                                </div>
                             </div>
-                        </div>
-                        <div v-else class="item-form-branch">{{ textFormBranch }}</div>
-                        <div class="w-100 d-flex justify-content-center mt-5 mb-3">
+                            <div>
+                                <div v-if="branchSelected.length > 0" class="form-address-branch p-0" style="height: 100%;">
+                                    <div v-for="(itembranch,index_branch) in branchSelected" class="form-branch-select">
+                                        <input v-model="address_branch" class="form-check-input" type="radio" name="address_branch" :id="`branch${index_branch}`" :value="index_branch" hidden>
+                                        <label class="form-check-label" :for="`branch${index_branch}`">
+                                            <h5 class="m-0 font-bold-22">Advice iStore - จังหวัดกำแพงเพชร</h5>
+                                            <hr>
+                                            <div class="form-data-branch">
+                                                <div class="form-control-imgbranch">
+                                                    <img class="item-img-branch" :src="itembranch.picture" alt="img-branch">
+                                                </div>
+                                                <div class="pe-4">
+                                                    <h5 class="m-0 mb-1 mb-sm-0 font-bold-21 line-height-20">{{ itembranch.name }}</h5>
+                                                    <p class="text-data-branch mb-0">วันและเวลาทำการ: {{ itembranch.startdate1 }}</p>
+                                                    <p class="text-data-branch mb-1">{{ itembranch.branch_address }}</p>
+                                                    <div class="w-100 row align-items-center">
+                                                        <div class="col-item-title line-height-20 text-data-branch">Tel:</div>
+                                                        <div class="col-item-text line-height-20 text-data-branch">{{ itembranch.branch_tel }}</div>
+                                                        <div class="col-item-title line-height-20 text-data-branch">Phone:</div>
+                                                        <div class="col-item-text line-height-20 text-data-branch">{{ itembranch.branch_mobile }}</div>
+                                                        <div class="col-item-title line-height-20 text-data-branch">Email:</div>
+                                                        <div class="col-item-text line-height-20"><span class="font-18 color-primary">{{ itembranch.branch_email }}</span></div>
+                                                        <div class="col-item-title line-height-20 text-data-branch">Website:</div>
+                                                        <div class="col-item-text line-height-20"><NuxtLink class="link-none-underlines font-18 color-primary" :to="`https://${itembranch.branch_website}`" target="_blank" rel="noopener noreferrer">{{ itembranch.branch_website }}</NuxtLink></div>
+                                                        <div class="col-item-title line-height-20 text-data-branch">Facebook:</div>
+                                                        <div class="col-item-text line-height-20"><NuxtLink class="link-none-underlines font-18 color-primary" :to="`https://${itembranch.fanpage}`" target="_blank" rel="noopener noreferrer">{{ itembranch.fanpage }}</NuxtLink></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div v-else class="item-form-branch" style="height: 25vh;">{{ textFormBranch }}</div>
+                            </div>
+                        </div>  
+                        <div v-else>
+                            <div class="input-group mb-3">
+                                <input v-model="search_addressBranch" @keyup.enter="getAddressBranch()" id="search_branch" type="text" class="form-control font-20" placeholder="ค้นหาชื่อจังหวัด , อำเภอ">
+                                <button @click="getAddressBranch()" id="btn_search_branch" :disabled="search_addressBranch == ''" class="btn btn-outline-secondary btn-branch-search" type="button">ค้นหา</button>
+                            </div>
+                            <div v-if="arrBranch.length > 0" class="mt-4">
+                                <h5 class="text-subject">สาขาที่ค้นพบ {{ arrBranch.length }} สาขา</h5>
+                                <hr>
+                            </div>
+                            <!-- <div class="row">
+                                <div class="col-6 mb-3">
+                                    <select class="form-select form-input-custom" id="selectSector">
+                                        <option selected>เลือกภาค</option>
+                                        <option value="1">ภาคกลาง</option>
+                                        <option value="2">ภาคเหนือ</option>
+                                        <option value="3">ภาคตะวันออกเฉียงเหนือ</option>
+                                        <option value="3">ภาคตะวันออก</option>
+                                        <option value="3">ภาคใต้</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 mb-3">
+                                    <select class="form-select form-input-custom" id="selectProvince">
+                                        <option selected>เลือกจังหวัด</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <select class="form-select form-input-custom" id="selectBranch">
+                                        <option selected>เลือกสาขา</option>
+                                    </select>
+                                </div>
+                            </div> -->
+                            <div v-if="arrBranch.length > 0" class="form-address-branch">
+                                <div v-for="(itembranch,index_branch) in arrBranch" class="form-branch-select">
+                                    <input v-model="address_branch" class="form-check-input" type="radio" name="address_branch" :id="`branch${index_branch}`" :value="index_branch" hidden>
+                                    <label class="form-check-label" :for="`branch${index_branch}`">
+                                        <h5 class="m-0 font-bold-22">Advice iStore - จังหวัดกำแพงเพชร</h5>
+                                        <hr>
+                                        <div class="form-data-branch">
+                                            <div class="form-control-imgbranch">
+                                                <img class="item-img-branch" :src="itembranch.picture" alt="img-branch">
+                                            </div>
+                                            <div class="pe-4">
+                                                <h5 class="m-0 mb-1 mb-sm-0 font-bold-21 line-height-20">{{ itembranch.name }}</h5>
+                                                <p class="text-data-branch mb-0">วันและเวลาทำการ: {{ itembranch.startdate1 }}</p>
+                                                <p class="text-data-branch mb-1">{{ itembranch.branch_address }}</p>
+                                                <div class="w-100 row align-items-center">
+                                                    <div class="col-item-title line-height-20 text-data-branch">Tel:</div>
+                                                    <div class="col-item-text line-height-20 text-data-branch">{{ itembranch.branch_tel }}</div>
+                                                    <div class="col-item-title line-height-20 text-data-branch">Phone:</div>
+                                                    <div class="col-item-text line-height-20 text-data-branch">{{ itembranch.branch_mobile }}</div>
+                                                    <div class="col-item-title line-height-20 text-data-branch">Email:</div>
+                                                    <div class="col-item-text line-height-20"><span class="font-18 color-primary">{{ itembranch.branch_email }}</span></div>
+                                                    <div class="col-item-title line-height-20 text-data-branch">Website:</div>
+                                                    <div class="col-item-text line-height-20"><NuxtLink class="link-none-underlines font-18 color-primary" :to="`https://${itembranch.branch_website}`" target="_blank" rel="noopener noreferrer">{{ itembranch.branch_website }}</NuxtLink></div>
+                                                    <div class="col-item-title line-height-20 text-data-branch">Facebook:</div>
+                                                    <div class="col-item-text line-height-20"><NuxtLink class="link-none-underlines font-18 color-primary" :to="`https://${itembranch.fanpage}`" target="_blank" rel="noopener noreferrer">{{ itembranch.fanpage }}</NuxtLink></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                            <div v-else class="item-form-branch">{{ textFormBranch }}</div>
+                        </div>       
+                        <div class="w-100 d-flex justify-content-center mt-3 mt-md-5 mb-3">
                             <button @click="selectBranch()" class="btn-pay" :disabled="address_branch == null">ยืนยัน</button>
                         </div>
                     </div>
@@ -814,13 +1013,121 @@
             </div>
         </div>
 
+        <!-- Modal add address -->
+        <div class="modal fade" id="addTypeDelivery" tabindex="-1" aria-labelledby="addTypeDeliveryLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style="max-width: 600px;">
+                <div class="modal-content" style="border-radius: 20px;overflow: hidden;">
+                    <div class="modal-header d-flex justify-content-center p-4">
+                        <h1 class="font-bold-28 m-0" id="addTypeDeliveryLabel">เลือกรูปแบบการจัดส่งสินค้า</h1>
+                        <button type="button" class="btn-close btn-close-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body p-4">
+                        <div class="form-control-delivery">
+                            <div class="form-checkbox-selete">
+                                <label class="form-check frm-address-receiveing receiveing-mobile mb-0" for="address_deliverys1" @click="">
+                                    <input v-model="type_delivery" ref="radio_address_deliverys1" class="form-check-input delivery-radio" type="radio" name="type_deli" id="address_deliverys1" value="wrap2" style="margin-bottom: 3px;margin-left: unset;">
+                                    <span class="form-check-label item-address-receiving">WRAP 2 ส่งด่วนภายใน 2 ชั่วโมง</span>
+                                </label>
+                                <div id="" class="form-content-card-selected delivery-content">
+                                    
+                                </div>
+                            </div>
+                            <div class="form-checkbox-selete">
+                                <label class="form-check frm-address-receiveing receiveing-mobile mb-0" for="address_deliverys2" @click="">
+                                    <input v-model="type_delivery" ref="radio_address_deliverys2" class="form-check-input delivery-radio" type="radio" name="type_deli" id="address_deliverys2" value="fast3" style="margin-bottom: 3px;margin-left: unset;">
+                                    <span class="form-check-label item-address-receiving">FAST 3 ส่งด่วนภายใน 3 ชั่วโมง</span>
+                                </label>
+                                <div id="" class="form-content-card-selected delivery-content">
+                                    
+                                </div>
+                            </div>
+                            <div class="form-checkbox-selete">
+                                <label class="form-check frm-address-receiveing receiveing-mobile mb-0" for="address_deliverys3" @click="">
+                                    <input v-model="type_delivery" ref="radio_address_deliverys3" class="form-check-input delivery-radio" type="radio" name="type_deli" id="address_deliverys3" value="fast5" style="margin-bottom: 3px;margin-left: unset;">
+                                    <span class="form-check-label item-address-receiving">FAST 5 ส่งด่วนภายใน 5 ชั่วโมง</span>
+                                </label>
+                                <div id="" class="form-content-card-selected delivery-content">
+                                    
+                                </div>
+                            </div>
+                            <div class="form-checkbox-selete">
+                                <label class="form-check frm-address-receiveing receiveing-mobile mb-0" for="address_deliverys4" @click="">
+                                    <input v-model="type_delivery" ref="radio_address_deliverys4" class="form-check-input delivery-radio" type="radio" name="type_deli" id="address_deliverys4" value="fast9" style="margin-bottom: 3px;margin-left: unset;">
+                                    <span class="form-check-label item-address-receiving">FAST 9 ส่งด่วนภายใน 9 ชั่วโมง</span>
+                                </label>
+                                <div id="" class="form-content-card-selected delivery-content">
+                                    
+                                </div>
+                            </div>
+                            <div class="form-checkbox-selete">
+                                <label class="form-check frm-address-receiveing receiveing-mobile mb-0" for="address_deliverys5" @click="openDeliveryContent('content_delivery_normal')">
+                                    <input v-model="type_delivery" ref="radio_address_deliverys5" class="form-check-input delivery-radio" type="radio" name="type_deli" id="address_deliverys5" value="normal" style="margin-bottom: 3px;margin-left: unset;">
+                                    <span class="form-check-label item-address-receiving">จัดส่งแบบปกติ</span>
+                                </label>
+                                <div id="content_delivery_normal" class="form-content-card-selected delivery-content" style="padding-left: 38px;">
+                                    <div class="px-3 pb-4">
+                                        <span class="font-20 color-gray">รับสินค้าภายใน 1-2 วันทำการ <a class="text-link-condition" href="#">เงื่อนไข</a></span>
+                                        <hr>
+                                        <p class="font-20 mb-1">เลือกขนส่ง :</p>
+                                        <div class="mt-2">
+                                            <label class="form-check frm-address-receiveing iotem mb-2" for="deli_trantect">
+                                                <input v-model="data_delivery" ref="radio_deli_trantect" class="form-check-input delivery-content-radio" type="radio" name="delivery" id="deli_trantect" value="trantect" style="margin-bottom: 3px;margin-left: unset;">
+                                                <img width="124px" src="https://img.advice.co.th/images_nas/iStore/delivery/trantect_deli.png" alt="delivery">
+                                            </label>
+                                            <label class="form-check frm-address-receiveing iotem mb-2" for="deli_dhl">
+                                                <input v-model="data_delivery" ref="radio_deli_dhl" class="form-check-input delivery-content-radio" type="radio" name="delivery" id="deli_dhl" value="dhl" style="margin-bottom: 3px;margin-left: unset;">
+                                                <img width="100px" src="https://img.advice.co.th/images_nas/iStore/delivery/DHL_deli.png" alt="delivery">
+                                            </label>
+                                            <label class="form-check frm-address-receiveing iotem mb-2" for="deli_kerry">
+                                                <input v-model="data_delivery" ref="radio_deli_kerry" class="form-check-input delivery-content-radio" type="radio" name="delivery" id="deli_kerry" value="kerry" style="margin-bottom: 3px;margin-left: unset;">
+                                                <img width="85px" src="https://img.advice.co.th/images_nas/iStore/delivery/Kerrry_Express_deli.png" alt="delivery">
+                                            </label>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                            <div class="form-checkbox-selete">
+                                <label class="form-check frm-address-receiveing receiveing-mobile mb-0" for="address_deliverys6" @click="openDeliveryContent('content_delivery_nextday')">
+                                    <input v-model="type_delivery" ref="radio_address_deliverys6" class="form-check-input delivery-radio" type="radio" name="type_deli" id="address_deliverys6" value="nextday" style="margin-bottom: 3px;margin-left: unset;">
+                                    <span class="form-check-label item-address-receiving">จัดส่งด่วนในวันถัดไป</span>
+                                </label>
+                                <div id="content_delivery_nextday" class="form-content-card-selected delivery-content">
+                                    
+                                </div>
+                            </div>
+                            <div class="form-checkbox-selete">
+                                <label class="form-check frm-address-receiveing receiveing-mobile mb-0" for="address_deliverys7" @click="">
+                                    <input v-model="type_delivery" ref="radio_address_deliverys7" class="form-check-input delivery-radio" type="radio" name="type_deli" id="address_deliverys7" value="noonnextday" style="margin-bottom: 3px;margin-left: unset;">
+                                    <span class="form-check-label item-address-receiving">จัดส่งด่วนภายในเที่ยงวันถัดไป</span>
+                                </label>
+                                <div id="" class="form-content-card-selected delivery-content">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100 d-flex justify-content-center mt-5 mb-3">
+                            <button @click="setDelivery" class="btn-pay">ยืนยัน</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <section class="mb-1" v-if="isMobile" >
+            <div class="d-flex align-items-center gap-3 bg-white p-2 ps-4">
+                <i data-v-d7a9db99="" class="fa-solid fa-angle-left" data-v-02281a80="" style="font-size: clamp(16px,2vw,18px);"></i>
+                <h1 class="text-subject-productdetail mb-0">ชำระเงิน</h1>
+            </div>
+        </section>
         <section class="bg-white">
-            <div class="container-fluid pt-4" style="padding-bottom: 10rem;">
-                <h1 class="text-subject-productdetail">ชำระเงิน</h1>
+            <div class="container-fluid pt-2 pt-md-4" style="padding-bottom: 10rem;">
+                <h1 v-if="!isMobile" class="text-subject-productdetail">ชำระเงิน</h1>
                 <div class="row">
-                    <div class="col-12 col-lg-6 p-4 pe-5 form-list-item">
+                    <div class="col-12 col-lg-6 pt-2 pt-lg-4 p-4 pe-lg-5 form-list-item">
                         <div v-if="isViewsize == 'desktop'" class="mb-4 item-checkout">
-                            <h4 class="text-section mb-3">ข้อมูลการรับสินค้า<span class="color-red">*</span></h4>
+                            <h4 class="text-section mb-3">ข้อมูลการรับสินค้า</h4>
+                            <h5 class="text-subject mb-2">เลือกวิธีการรับสินค้า<span class="color-red">*</span></h5>
                             <div class="group-item-receiv mb-3">
                                 <label class="form-check frm-item-receiveing" for="receiveBranch" @click="openModalBranch('add_branch')">
                                     <input ref="radio_branch" class="form-check-input" type="radio" name="receive" id="receiveBranch" style="margin-bottom: 3px;margin-left: unset;">
@@ -867,80 +1174,131 @@
                                     </div>
                                </div>
                             </div>
-                            <div v-if="address_delivery && isReceive == 'delivery'" class="form-mail-etax">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="text-subject m-0">ที่อยู่ในการจัดส่งสินค้า:</h5>
+                            <div v-if="address_delivery && isReceive == 'delivery'">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="text-subject m-0">ที่อยู่ในการจัดส่งสินค้า</h5>
                                     <button class="btn-edit-form" data-bs-toggle="modal" data-bs-target="#AddressModal">แก้ไข<i class="fa-solid fa-angle-right" style="font-size: 12px;"></i></button>
                                 </div>
-                                <div class="px-3">
-                                    <div class="group-item-nametel">
-                                        <h5 class="m-0 font-bold-21">{{ address_delivery?.name }} {{ address_delivery?.lastname }}</h5>
-                                        <span class="color-graydark font-21">{{ address_delivery?.tel }}</span>
+                                <div class="ps-4">
+                                    <div class="form-mail-etax mb-3">
+                                        <div class="px-3">
+                                            <div class="group-item-nametel">
+                                                <h5 class="m-0 font-bold-21">{{ address_delivery?.name }} {{ address_delivery?.lastname }}</h5>
+                                                <span class="color-graydark font-21">{{ address_delivery?.tel }}</span>
+                                            </div>
+                                            <p class="m-0 font-18 color-gray">{{ address_delivery?.addressfull }}</p>
+                                        </div>
                                     </div>
-                                    <p class="m-0 font-18 color-gray">{{ address_delivery?.addressfull }}</p>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <h5 class="text-subject m-0">รูปแบบการจัดส่งสินค้า</h5>
+                                    <button v-if="Object.keys(arr_delivery_type).length !== 0" class="btn-edit-form" data-bs-toggle="modal" data-bs-target="#addTypeDelivery">แก้ไข<i class="fa-solid fa-angle-right" style="font-size: 12px;"></i></button>
+                                </div>
+                                <div class="ps-4">
+                                    <div v-if="Object.keys(arr_delivery_type).length === 0" class="form-checkbox-selete" data-bs-toggle="modal" data-bs-target="#addTypeDelivery">
+                                        <span class="form-set-address font-20 color-gray">เลือกที่อยู่ในการรับสินค้า</span>
+                                    </div>
+                                    <div v-else class="form-mail-etax mb-3">
+                                        <div class="d-flex align-items-center gap-2">
+                                            <span class="font-22 color-primary">จัดส่งแบบปกติ :</span>
+                                            <span class="font-20 color-gray">รับสินค้าภายใน 1-2 วันทำการ <a class="text-link-condition" href="#">เงื่อนไข</a></span>
+                                        </div>
+                                        <div class="mt-2">
+                                            <img height="40px" :src="arr_delivery_type.images" alt="img-delivery">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                         <div v-else class="mb-4 item-checkout">
                             <h4 class="text-section mb-3">ข้อมูลการรับสินค้า<span class="color-red">*</span></h4>
-                            <label class="form-check frm-item-receiveing mb-2" for="receiveBranch" @click="openModalBranch('add_branch')">
-                                <input ref="radio_branch" class="form-check-input" type="radio" name="receive" id="receiveBranch" style="margin-bottom: 3px;margin-left: unset;">
-                                <span class="form-check-label item-text-receiving">
-                                    <IconPackage class="icon-receive icon-box-receive"></IconPackage>รับสินค้าที่สาขา
-                                </span>
-                            </label>
-                            <div v-if="item_branch.length > 0 && isReceive == 'branch'" class="form-branch-select mb-2">
-                                <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <h5 class="text-subject m-0">รับสินค้าที่สาขา:</h5>
-                                    <button class="btn-edit-form" @click="openModalBranch('edit_branch')">แก้ไข<i class="fa-solid fa-angle-right" style="font-size: 12px;"></i></button>
-                                </div>
-                               <div v-for="branch in item_branch" class="px-3">
-                                    <h5 class="m-0 font-bold-22">Advice iStore - จังหวัดกำแพงเพชร</h5>
-                                    <hr>
-                                    <div class="form-data-branch">
-                                        <div class="form-control-imgbranch">
-                                            <img class="item-img-branch" :src="branch.picture" alt="img-branch">
-                                        </div>
-                                        <div class="100% pe-4">
-                                            <h5 class="m-0 font-bold-21 line-height-20">{{ branch.name }}</h5>
-                                            <p class="text-data-branch mb-0">วันและเวลาทำการ: {{ branch.startdate1 }}</p>
-                                            <p class="text-data-branch mb-1">{{ branch.startdate1 }}</p>
-                                            <div class="w-100 row align-items-center">
-                                                <div class="col-item-title line-height-20 text-data-branch">Tel:</div>
-                                                <div class="col-item-text line-height-20 text-data-branch">{{ branch.branch_tel }}</div>
-                                                <div class="col-item-title line-height-20 text-data-branch">Phone:</div>
-                                                <div class="col-item-text line-height-20 text-data-branch">{{ branch.branch_mobile }}</div>
-                                                <div class="col-item-title line-height-20 text-data-branch">Email:</div>
-                                                <div class="col-item-text line-height-20"><span class="font-18 color-primary">{{ branch.branch_email }}</span></div>
-                                                <div class="col-item-title line-height-20 text-data-branch">Website:</div>
-                                                <div class="col-item-text line-height-20"><NuxtLink class="link-none-underlines font-18 color-primary" :to="`https://${branch.branch_website}`" target="_blank" rel="noopener noreferrer">{{ branch.branch_website }}</NuxtLink></div>
-                                                <div class="col-item-title line-height-20 text-data-branch">Facebook:</div>
-                                                <div class="col-item-text line-height-20"><NuxtLink class="link-none-underlines font-18 color-primary" :to="`https://${branch.fanpage}`" target="_blank" rel="noopener noreferrer">{{ branch.fanpage }}</NuxtLink></div>
+                            <div class="form-checkbox-selete" style="margin-bottom: 10px;">
+                                 <label class="form-check frm-item-receiveing receiveing-mobile mb-0" for="receiveBranch" @click="openModalBranch('add_branch')">
+                                     <input ref="radio_branch" class="form-check-input" type="radio" name="receive" id="receiveBranch" style="margin-bottom: 3px;margin-left: unset;">
+                                     <span class="form-check-label item-text-receiving">
+                                         <IconPackage class="icon-receive icon-box-receive"></IconPackage>รับสินค้าที่สาขา
+                                     </span>
+                                 </label>
+                                <div id="content_branch" class="form-content-card-selected form-content-shipping">
+                                    <div v-if="item_branch.length > 0 && isReceive == 'branch'" class="px-3 pb-3">
+                                        <div class="form-branch-select mb-2">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <h5 class="text-subject m-0">รับสินค้าที่สาขา:</h5>
+                                                <button class="btn-edit-form" @click="openModalBranch('edit_branch')">แก้ไข<i class="fa-solid fa-angle-right" style="font-size: 12px;"></i></button>
+                                            </div>
+                                            <div v-for="branch in item_branch" class="px-3">
+                                                <h5 class="m-0 font-bold-22">Advice iStore - จังหวัดกำแพงเพชร</h5>
+                                                <hr>
+                                                <div class="form-data-branch">
+                                                    <div class="form-control-imgbranch">
+                                                        <img class="item-img-branch" :src="branch.picture" alt="img-branch">
+                                                    </div>
+                                                    <div class="100% pe-4">
+                                                        <h5 class="m-0 font-bold-21 line-height-20">{{ branch.name }}</h5>
+                                                        <p class="text-data-branch mb-0">วันและเวลาทำการ: {{ branch.startdate1 }}</p>
+                                                        <p class="text-data-branch mb-1">{{ branch.startdate1 }}</p>
+                                                        <div class="w-100 row align-items-center">
+                                                            <div class="col-item-title line-height-20 text-data-branch">Tel:</div>
+                                                            <div class="col-item-text line-height-20 text-data-branch">{{ branch.branch_tel }}</div>
+                                                            <div class="col-item-title line-height-20 text-data-branch">Phone:</div>
+                                                            <div class="col-item-text line-height-20 text-data-branch">{{ branch.branch_mobile }}</div>
+                                                            <div class="col-item-title line-height-20 text-data-branch">Email:</div>
+                                                            <div class="col-item-text line-height-20"><span class="font-18 color-primary">{{ branch.branch_email }}</span></div>
+                                                            <div class="col-item-title line-height-20 text-data-branch">Website:</div>
+                                                            <div class="col-item-text line-height-20"><NuxtLink class="link-none-underlines font-18 color-primary" :to="`https://${branch.branch_website}`" target="_blank" rel="noopener noreferrer">{{ branch.branch_website }}</NuxtLink></div>
+                                                            <div class="col-item-title line-height-20 text-data-branch">Facebook:</div>
+                                                            <div class="col-item-text line-height-20"><NuxtLink class="link-none-underlines font-18 color-primary" :to="`https://${branch.fanpage}`" target="_blank" rel="noopener noreferrer">{{ branch.fanpage }}</NuxtLink></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                               </div>
-                            </div>
-                            <label class="form-check frm-item-receiveing mb-2" for="delivery" @click="addressDelivery">
-                                <input ref="radio_delivery" class="form-check-input" type="radio" name="receive" id="delivery" style="margin-bottom: 3px;margin-left: unset;">
-                                <span class="form-check-label item-text-receiving">
-                                    <IconTruckFast class="icon-receive"></IconTruckFast>จัดส่งสินค้า
-                                </span>
-                            </label>
-                            <div v-if="address_delivery && isReceive == 'delivery'" class="form-mail-etax">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <h5 class="text-subject m-0">ที่อยู่ในการจัดส่งสินค้า:</h5>
-                                    <button class="btn-edit-form" data-bs-toggle="modal" data-bs-target="#AddressModal">แก้ไข<i class="fa-solid fa-angle-right" style="font-size: 12px;"></i></button>
                                 </div>
-                                <div class="px-3">
-                                    <div class="group-item-nametel">
-                                        <h5 class="m-0 font-bold-21">{{ address_delivery?.name }} {{ address_delivery?.lastname }}</h5>
-                                        <span class="color-graydark font-21">{{ address_delivery?.tel }}</span>
+                            </div>
+                            <div class="form-checkbox-selete">
+                                <label class="form-check frm-item-receiveing receiveing-mobile mb-0" for="delivery" @click="addressDelivery">
+                                    <input ref="radio_delivery" class="form-check-input" type="radio" name="receive" id="delivery" style="margin-bottom: 3px;margin-left: unset;">
+                                    <span class="form-check-label item-text-receiving">
+                                        <IconTruckFast class="icon-receive"></IconTruckFast>จัดส่งสินค้า
+                                    </span>
+                                </label>
+                                <div id="content_delivery" class="form-content-card-selected form-content-shipping">
+                                    <div v-if="address_delivery && isReceive == 'delivery'" class="px-3 pb-3">
+                                        <div class="form-mail-etax">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h5 class="text-subject m-0">ที่อยู่ในการจัดส่งสินค้า:</h5>
+                                                <button class="btn-edit-form" data-bs-toggle="modal" data-bs-target="#AddressModal">แก้ไข<i class="fa-solid fa-angle-right" style="font-size: 12px;"></i></button>
+                                            </div>
+                                            <div class="px-3">
+                                                <div class="group-item-nametel">
+                                                    <h5 class="m-0 font-bold-21">{{ address_delivery?.name }} {{ address_delivery?.lastname }}</h5>
+                                                    <span class="color-graydark font-21">{{ address_delivery?.tel }}</span>
+                                                </div>
+                                                <p class="m-0 font-18 color-gray">{{ address_delivery?.addressfull }}</p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3 mb-2">
+                                            <h5 class="text-subject m-0">รูปแบบการจัดส่งสินค้า</h5>
+                                            <button v-if="Object.keys(arr_delivery_type).length !== 0" class="btn-edit-form" data-bs-toggle="modal" data-bs-target="#addTypeDelivery">แก้ไข<i class="fa-solid fa-angle-right" style="font-size: 12px;"></i></button>
+                                        </div>
+                                        <div v-if="Object.keys(arr_delivery_type).length === 0" class="form-checkbox-selete" data-bs-toggle="modal" data-bs-target="#addTypeDelivery">
+                                            <span class="form-set-address font-20 color-gray">เลือกที่อยู่ในการรับสินค้า</span>
+                                        </div>
+                                        <div v-else class="form-mail-etax mb-3">
+                                            <div class="">
+                                                <span class="font-22 color-primary me-2">จัดส่งแบบปกติ :</span>
+                                                <span class="font-20 color-gray">รับสินค้าภายใน 1-2 วันทำการ <a class="text-link-condition" href="#">เงื่อนไข</a></span>
+                                            </div>
+                                            <div class="mt-2">
+                                                <img height="40px" :src="arr_delivery_type.images" alt="img-delivery">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <p class="m-0 font-18 color-gray">{{ address_delivery?.addressfull }}</p>
                                 </div>
                             </div>
                         </div>
+                
                       
 
                         <!-- <div v-if="isReceive == 'delivery'" class="mb-4 item-checkout">
@@ -1230,7 +1588,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-12 col-lg-6 p-4 ps-5">
+                    <div class="col-12 col-lg-6 p-4 ps-lg-5">
                         <div class="form-payment-checkout">
                             <h4 class="text-section mb-3">รายการสินค้า</h4>
                             <ul class="form-order-product p-0 pb-2 mb-4 pe-3">
@@ -1325,13 +1683,24 @@
         filter: invert(68%) sepia(81%) saturate(1345%) hue-rotate(201deg) brightness(93%) contrast(119%);
     }
 
-    .frm-card-select {
+    .frm-card-select, .form-set-address {
+        position: relative;
         display: flex;
         align-items: center;
         gap: 18px;
         width: 100%;
         padding: 1.2rem;
         cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .form-set-address::after {
+        content: '\f105';
+        position: absolute;
+        right: 25px;
+        font: var(--fa-font-solid);
+        color: #8E8E93;
+        font-size: 14px;
         transition: 0.3s;
     }
 
@@ -1358,6 +1727,33 @@
     .item-text-receiving.active {
         color: #007AFF;
     }
+
+    .form-control-delivery .form-checkbox-selete:nth-last-child(n+2) {
+        margin-bottom: 0.5rem;
+    }
+   
+    .item-address-receiving {
+        font-size: clamp(20px, 2vw, 26px);
+        line-height: normal;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+    .item-address-receiving.active {
+        color: #007AFF;
+    }
+
+    .frm-address-receiveing {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        width: 100%;
+        padding: 1.2rem;
+        cursor: pointer;
+        transition: 0.3s;
+        border: 1px solid #DBDDE3;
+        border-radius: 8px;
+    }
     
     .frm-item-receiveing {
         display: flex;
@@ -1375,6 +1771,13 @@
     }
     .frm-item-receiveing:has(input[type="radio"]:checked) {
         border: 1px solid #007AFF;
+    }
+
+    .receiveing-mobile {
+        border: unset;
+    }
+    .receiveing-mobile:has(input[type="radio"]:checked) {
+        border: unset;
     }
 
     .frm-item-address {
@@ -1660,6 +2063,11 @@
         display: flex;
         align-items: center;
         gap: 12px;
+    }
+
+    .text-link-condition {
+        color: #F04438;
+        text-decoration: underline;
     }
 
     /* responsive mobile  */

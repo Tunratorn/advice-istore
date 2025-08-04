@@ -35,12 +35,38 @@ export default defineNuxtConfig({
 					crossorigin: "anonymous"
 				},
 				{ rel: 'icon', type: 'image/x-icon', href: '/images/icon/apple-logo.png' },
+				{ rel: 'stylesheet', href: 'https://img.advice.co.th/images_nas/iStore/html/compare_mac-demo/css/main.css?v=1' },
 			],
 		}
 	},
 
 	css: ['~/assets/css/main.css', '~/assets/css/product.css', '~/assets/css/animetion.css', '~/assets/css/fontsize.css', '~/assets/css/main_mobile.css',],
 	modules: ['nuxt-swiper', 'nuxt-viewport', 'nuxt-anchorscroll'],
+	viewport: {
+		breakpoints: {
+			// 📱 Mobile
+			'mobile-sm': 375,    // iPhone SE
+			'mobile-md': 480,    // ขนาดทั่วไป
+			'mobile-lg': 640,    // ขนาดใหญ่สุดของ mobile
+			
+			// 📟 Tablet
+			'tablet-sm': 768,    // iPad Mini
+			'tablet-md': 992,    // Tablet แนวนอน
+			'tablet-lg': 1024,   // iPad Pro 11"
+
+			// 💻 Desktop
+			'desktop': 1200,  
+			'desktop-sm': 1280,  // MacBook Air
+			'desktop-md': 1440,  // Full HD
+			'desktop-lg': 1920   // 2K+ Monitor
+		},
+
+		defaultBreakpoints: {
+			mobile: 'mobile-md',
+			tablet: 'tablet-md',
+			desktop: 'desktop-md',
+		},
+	},
 	compatibilityDate: '2025-01-13',
 
 })

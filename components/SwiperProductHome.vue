@@ -1,5 +1,7 @@
 <script lang="ts" setup>
     import Swiper from 'swiper/bundle';
+    import { useI18n } from 'vue-i18n'
+    const { t, locale } = useI18n();
 
     const props = defineProps(['objectProduct','className','slidesPerView','isMenu','subject'])
 
@@ -94,37 +96,37 @@
 
 <template>
     <div v-if="isSubject == 'newProduct'" class="d-flex justify-content-between">
-        <h1 class="text-subject">สินค้าใหม่ล่าสุด</h1>
+        <h1 class="text-subject">{{ $t('new_arrivals') }}</h1>
         <NuxtLink class="form-link-detail" :to="`/product/${linkMenu}`" v-if="view_breakpoint != 'desktop' && view_breakpoint != 'desktopMedium' && view_breakpoint != 'desktopWide'">
-            <span class="font-20" style="width: max-content;">ดู {{ textSelectProduct }} ทั้งหมด</span>
+            <span class="font-20" style="width: max-content;">{{ $t('views') }} {{ textSelectProduct }} {{ $t('all') }}</span>
             <IconArrowRight></IconArrowRight>
         </NuxtLink>
     </div>
     <div v-if="isSubject == 'iPhone'" class="d-flex justify-content-between">
-        <h1 class="text-subject">ให้ <span class="text-highlight">iPhone</span> พาคุณไปเจอกับสิ่งใหม่</h1>
+        <h1 class="text-subject">{{ $t('iphone_experience') }} <span class="text-highlight">iPhone</span></h1>
         <NuxtLink class="form-link-detail" to="/product/iphone">
-            <span class="font-20" style="width: max-content;">ดู iPhone ทั้งหมด</span>
+            <span class="font-20" style="width: max-content;">{{ $t('view_all') }}</span>
             <IconArrowRight></IconArrowRight>
         </NuxtLink>
     </div>
     <div v-if="isSubject == 'Mac'" class="d-flex justify-content-between">
-        <h1 class="text-subject">เปิดโลกใบใหม่กับ <span class="text-highlight">Mac</span> ราคาพิเศษเฉพาะที่ Advice iStore</h1>
+        <h1 class="text-subject">{{ $t('mac_unlock') }} <span class="text-highlight">Mac</span></h1>
         <NuxtLink class="form-link-detail" to="/product/mac">
-            <span class="font-20" style="width: max-content;">ดู Mac ทั้งหมด</span>
+            <span class="font-20" style="width: max-content;">{{ $t('view_all') }}</span>
             <IconArrowRight></IconArrowRight>
         </NuxtLink>
     </div>
     <div v-if="isSubject == 'Watch'" class="d-flex justify-content-between">
-        <h1 class="text-subject">รักทุกวันกับ <span class="text-highlight">Apple Watch</span> คู่หูที่คุณขาดไม่ได้</h1>
+        <h1 class="text-subject"><span class="text-highlight">Apple Watch</span> {{ $t('applewatch_allinone') }}</h1>
         <NuxtLink class="form-link-detail" to="/product/watch">
-            <span class="font-20" style="width: max-content;">ดู Apple Watch ทั้งหมด</span>
+            <span class="font-20" style="width: max-content;">{{ $t('view_all') }}</span>
             <IconArrowRight></IconArrowRight>
         </NuxtLink>
     </div>
     <div v-if="isSubject == 'Accessories'" class="d-flex justify-content-between">
-        <h1 class="text-subject">เติมเต็มประสบการณ์ Apple ของคุณด้วย <span class="text-highlight">Accessories</span> ที่ลงตัว</h1>
+        <h1 class="text-subject">{{ $t('accessories_boost') }} <span class="text-highlight">Accessories</span></h1>
         <NuxtLink class="form-link-detail" to="/product">
-            <span class="font-20" style="width: max-content;">ดู Accessories ทั้งหมด</span>
+            <span class="font-20" style="width: max-content;">{{ $t('view_all') }}</span>
             <IconArrowRight></IconArrowRight>
         </NuxtLink>
     </div>
@@ -142,7 +144,7 @@
                 <li class="item-newproduct">Accessories</li>
             </ul>
             <NuxtLink class="form-link-detail" :to="`/product/${linkMenu}`" v-if="view_breakpoint == 'desktop' || view_breakpoint == 'desktopMedium' || view_breakpoint == 'desktopWide'">
-                <span class="font-20">ดู {{ textSelectProduct }} ทั้งหมด</span>
+                <span class="font-20">{{ $t('views') }} {{ textSelectProduct }} {{ $t('all') }}</span>
                 <IconArrowRight></IconArrowRight>
             </NuxtLink>
         </div>

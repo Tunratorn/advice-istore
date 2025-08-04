@@ -529,7 +529,7 @@ body {
 }
 
 .font-text-footer {
-    font-size: clamp(14px,3vw,18px);
+    font-size: clamp(16px,3vw,18px);
     color: #9CA3AF;
 }
 
@@ -1405,14 +1405,69 @@ background: #555;
 }
 
 
+/* dropdown search  */
+.form-select-dropdown {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.icon-dropdown-search {
+    fill: #000;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    transform: rotate(270deg);
+    transition: 0.2s;
+}
+
+.input-select-dropdown {
+    padding-right: 2rem;
+}
+
+.form-select-dropdown:focus-within .icon-dropdown-search {
+    color: #007AFF;   
+    transition: 0.2s;        
+    transform: rotate(360deg);
+}
+
+.custom-scrollbar-dropdown {
+    width: 100%;
+    max-height: 50vh;
+    overflow-y: auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 5px;
+    margin-top: 5px;
+    position: absolute;
+    background: white;
+    z-index: 99;
+}
+
+.custom-scrollbar-dropdown::-webkit-scrollbar {
+    width: 7px;
+    display: block;
+}
+.custom-scrollbar-dropdown::-webkit-scrollbar-track {
+    background: #f4f4f4; 
+    border-radius: 10px;
+}
+.custom-scrollbar-dropdown::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 10px;
+}
+.custom-scrollbar-dropdown::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+
+
+
 
 
 /* responsive mobile  */
 @media only screen and (max-width: 1024px) {
-    .product-wrapper {
-        grid-template-columns: unset;
-    }
-
     .bg-flashsale {
         background-image: url('/public/images/BGMobileflash.png');
     }
@@ -1421,6 +1476,22 @@ background: #555;
         justify-content: center;
         width: max-content;
     }
+
+    .swiper-slide:hover {
+        transform: unset !important;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .product-wrapper {
+        grid-template-columns: unset;
+        gap: 0;
+    }
+
+    .frame-card-menu {
+        width: 100%;
+    }
+
 }
 
 @media only screen and (max-width: 640px) {
@@ -1434,13 +1505,6 @@ background: #555;
         padding: 1rem !important;
     }
 
-    .product-wrapper {
-        grid-template-columns: unset;
-    }
-
-    .frame-card-menu {
-        width: 100%;
-    }
 
 }
 

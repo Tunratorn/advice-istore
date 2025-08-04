@@ -1,6 +1,7 @@
 <script setup>
 import Swiper from 'swiper/bundle';
-
+import { useI18n } from 'vue-i18n'
+const { t, locale } = useI18n();
 const navbarMenu_ = navbarMenu()
 navbarMenu_.value = ''
 
@@ -11,6 +12,7 @@ const arrMac = ref([])
 const arrAppleWatch = ref([])
 const arrAccessories = ref([])
 const arrFlashsale = ref([])
+const isMobile = ref(false)
 
 const slidesPerView_swiperNew = ref(3)
 const slidesPerView_swiperFlashsale = ref(3)
@@ -66,15 +68,16 @@ const swiperFlashsale = async () => {
     }
 
     swiper_flashsale = new Swiper(".swiper-content-flashsale", {
-      slidesPerView: slidesPerView_swiperFlashsale.value,
-      spaceBetween: 20,
-      freeMode: true,
+        slidesPerView: slidesPerView_swiperFlashsale.value,
+        spaceBetween: 20,
+        centeredSlides: isMobile.value,
+        freeMode: true,
     //   loop: true,
-      pagination: {
-        el: ".swiper-pagination-flashsale",
-        clickable: true,
-        dynamicBullets: true,
-      },
+        pagination: {
+            el: ".swiper-pagination-flashsale",
+            clickable: true,
+            dynamicBullets: true,
+        },
     });
 }
 
@@ -105,14 +108,17 @@ const updateWidth = async () => {
     swiper_product.value += 1
 
     slidesPerView_swiperNew.value = 1
-    slidesPerView_swiperFlashsale.value = 1
+    slidesPerView_swiperFlashsale.value = 1.5
+    isMobile.value = true
     if (window.innerWidth > 1200) {
         slidesPerView_swiperNew.value = 3
         slidesPerView_swiperFlashsale.value = 3
+        isMobile.value = false
     }
     else if (window.innerWidth > 991) {
         slidesPerView_swiperNew.value = 2
         slidesPerView_swiperFlashsale.value = 2
+        isMobile.value = false
     } 
     
     await swiperFlashsale()
@@ -135,9 +141,9 @@ onMounted(async () => {
         <div>
             <img width="100%" class="" src="/images/banner/banneriStoreHome.jpg" alt="" srcset="">
         </div>
-        <section class="container-fluid p-3 px-sm-5">
+        <section class="container-fluid p-3 pb-1 px-sm-5">
             <div class="mt-md-5 mt-4 mb-sm-0">
-                <h1 class="text-subject">ดูผลิตภัณฑ์ Apple</h1>
+                <h1 class="text-subject">{{ $t('view_apple_products') }}</h1>
                 <div class="mt-md-4 text-fadein overflow-x-scroll">
                     <ul class="form-control-menuproduct mb-0 mb-md-3">
                         <li class="">
@@ -175,7 +181,7 @@ onMounted(async () => {
                     </ul>
                 </div>
             </div>
-            <hr class="mb-4 mb-md-5">
+            <hr class="mb-2 mb-md-5">
             <div class="mb-0 mb-xl-5 pb-md-3 position-relative">
                 <!-- <h1 class="text-subject">สินค้าใหม่ล่าสุด</h1> -->
                 <SwiperProductHome :key="swiper_product" v-if="arrNewProduct != ''" :objectProduct="arrNewProduct" :className="'swiper-newproduct'" :isMenu="'T'" :subject="'newProduct'"></SwiperProductHome>
@@ -183,14 +189,14 @@ onMounted(async () => {
         </section>
 
         <!-- content Flashsale -->
-        <section class="my-5 bg-flashsale p-sm-5">
+        <section class="mb-2 mb-lg-4 bg-flashsale p-sm-5">
             <div class="row m-0">
                 <div class="col-12 col-sm-5 col-md-6 col-lg-3 d-flex justify-content-center align-items-center p-0">
                     <div class="item-time-flashsale">
                         <div class="px-5 pt-4 pt-sm-0 px-sm-0">
                             <img class="logo-flashsale" src="/images/logo/FlashSaletext.png" alt="img-text-flashsale">
                         </div>
-                        <p class="font-22 text-light">จะจบลงใน:</p>
+                        <p class="text-light" style="font-size: clamp(22px, 2vw, 24px);line-height: 22px;">จะจบลงใน:</p>
                         <div class="form-time-flashsale">
                             <div class="box-ime-flashsale">
                                 00
@@ -204,7 +210,7 @@ onMounted(async () => {
                                 00
                             </div>
                         </div>
-                        <p class="font-22 text-light m-4">พบกับราคาสุดพิเศษที่คุณไม่ควรพลาด
+                        <p class="text-light m-4" style="font-size: clamp(20px, 2vw, 22px);line-height: 22px;">พบกับราคาสุดพิเศษที่คุณไม่ควรพลาด
                             ช่วงเวลาพิเศษสำหรับการซื้อสินค้า ที่คัดสรรมาเพื่อคุณ พร้อมให้เป็นเจ้าของแล้วตอนนี้
                         </p>
                         <div class="d-flex justify-content-center align-items-center">
@@ -213,12 +219,12 @@ onMounted(async () => {
                             <img class="flashsale-logo-apple" src="/images/logo/logo-apple-light.png" alt="img-text-flashsale">
                         </div>
                         <div class="text-center mt-4 mt-lg-5">
-                            <a class="font-22 text-light" href="#">ดูทั้งหมด</a>
+                            <a class="font-22 text-light" href="#">{{ $t('view_all') }}</a>
                         </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-7 col-md-6 col-lg-9 pt-4 form-flashsale">
-                    <div class="overflow-hidden form-swiper-flashsale">
+                <div class="col-12 col-sm-7 col-md-6 col-lg-9 px-0 pt-4 form-flashsale">
+                    <div class=" overflow-hidden form-swiper-flashsale">
                         <div class="row-swiper position-relative m-2">
                             <div class="swiper d-flex align-items-center swiper-content-flashsale">
                                 <div class="swiper-wrapper swiper-wrapper-flashsale">
@@ -237,7 +243,7 @@ onMounted(async () => {
             <div class="group-special container-lg mb-5">
                 <div class="group-text-benefits">
                     <div>
-                        <h1 class="text-subject mb-3">จุดเด่นของ <span class="color-bluedark">iStore สิทธิประโยชน์</span><br> ที่คุณไม่ควรพลาด</h1>
+                        <h1 class="text-subject mb-3"><span class="color-bluedark">{{ $t('istore_benefits') }}</span><br> {{ $t('istore_benefits_detail') }}</h1>
                         <img class="img-gropspecial" src="/images/istoregroup.png" alt="img-gropspecial" srcset="">
                     </div>
                 </div>
@@ -248,10 +254,10 @@ onMounted(async () => {
                         </div>
                         <div class="box-text-detail">
                             <div>
-                                <h1 class="text-subject text-benefits">บริการแลกเปลี่ยน</h1>
-                                <p class="text-detail-help">ให้คุณเข้าถึงเทคโนโลยีใหม่ๆจากทาง Apple ได้ง่ายมากยิ่งขึ้น ด้วยบริการสุดพิเศษจากทางแอดไวซ์ เปลี่ยนเครื่องเดิมของคุณ เป็นเครื่องใหม่ และช่วยรักษ์โลกไปพร้อมกัน !</p>
+                                <h1 class="text-subject text-benefits">{{ $t('tradein') }}</h1>
+                                <p class="text-detail-help">{{ $t('tradein_detail') }}</p>
                             </div>
-                            <button class="btn-detail-data">ดูข้อมูลเพิ่มเติม</button>
+                            <button class="btn-detail-data">{{ $t('view_more') }}</button>
                         </div>
                     </div>
                     <div class="form-borderbox-detail">
@@ -260,10 +266,10 @@ onMounted(async () => {
                         </div>
                         <div class="box-text-detail">
                             <div>
-                                <h1 class="text-subject text-benefits">บริการจัดส่งฟรี </h1>
-                                <p class="text-detail-help">จัดส่งฟรีถึงบ้าน หรือนัดรับที่สาขาใกล้บ้านคุณเพื่อความสะดวกสบายที่มากยิ่งขึ้น</p>
+                                <h1 class="text-subject text-benefits">{{ $t('delivery_title') }} </h1>
+                                <p class="text-detail-help">{{ $t('delivery_detail') }}</p>
                             </div>
-                            <button class="btn-detail-data">ดูข้อมูลเพิ่มเติม</button>
+                            <button class="btn-detail-data">{{ $t('view_more') }}</button>
                         </div>
                     </div>
                 </div>
@@ -282,12 +288,12 @@ onMounted(async () => {
             </div>
         </section>
         <section style="background-color: #E5E7EB;">
-            <div class="container-fluid py-5">
-                <div class="mb-md-5 mb-4 position-relative">
+            <div class="container-fluid pt-4 pb-4">
+                <div class="mb-md-5 mb-2 position-relative">
                     <div class="d-flex justify-content-between align-items-center">
-                        <h1 class="text-subject">โปรโมชั่น / สิทธิประโยชน์</h1>
+                        <h1 class="text-subject">{{ $t('promotions_benefits') }}</h1>
                         <div class="form-link-detail">
-                            <span class="font-20">ดูโปรโมชั่น / สิทธิประโยชน์ทั้งหมด</span>
+                            <span class="font-20">{{ $t('view_all') }}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 16 17" fill="none">
                                 <g clip-path="url(#clip0_3854_26829)">
                                     <path d="M4.04826 15.4942C4.04808 15.3629 4.07391 15.2328 4.12426 15.1115C4.1746 14.9902 4.24847 14.8801 4.34159 14.7875L9.45626 9.67217C9.61107 9.5174 9.73387 9.33365 9.81766 9.13142C9.90144 8.92918 9.94457 8.71241 9.94457 8.49351C9.94457 8.2746 9.90144 8.05784 9.81766 7.8556C9.73387 7.65336 9.61107 7.46961 9.45626 7.31484L4.34826 2.20751C4.25275 2.11526 4.17656 2.00492 4.12415 1.88291C4.07175 1.76091 4.04416 1.62969 4.04301 1.49691C4.04185 1.36413 4.06715 1.23245 4.11743 1.10955C4.16772 0.986657 4.24197 0.875006 4.33586 0.781114C4.42975 0.687221 4.54141 0.612967 4.6643 0.562687C4.7872 0.512405 4.91888 0.487104 5.05166 0.488258C5.18444 0.489412 5.31566 0.516997 5.43766 0.569406C5.55966 0.621816 5.67001 0.697997 5.76226 0.793508L10.8703 5.90084C11.557 6.5889 11.9428 7.52135 11.9428 8.49351C11.9428 9.46567 11.557 10.3981 10.8703 11.0862L5.75559 16.2015C5.61574 16.3415 5.43751 16.4368 5.24347 16.4754C5.04943 16.514 4.84829 16.4942 4.66551 16.4185C4.48273 16.3428 4.32652 16.2145 4.21664 16.05C4.10677 15.8855 4.04817 15.692 4.04826 15.4942Z" fill="#48484A"/>
@@ -325,9 +331,9 @@ onMounted(async () => {
                 </div>
                 <div class="">
                     <div class="d-flex justify-content-between align-items-center mb-2 mb-md-3">
-                        <h1 class="text-subject">บทความ</h1>
+                        <h1 class="text-subject">{{ $t('articles') }}</h1>
                         <div class="form-link-detail">
-                            <span class="font-20">ดูบทความทั้งหมด</span>
+                            <span class="font-20">{{ $t('view_all') }}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 16 17" fill="none">
                                 <g clip-path="url(#clip0_3854_26829)">
                                     <path d="M4.04826 15.4942C4.04808 15.3629 4.07391 15.2328 4.12426 15.1115C4.1746 14.9902 4.24847 14.8801 4.34159 14.7875L9.45626 9.67217C9.61107 9.5174 9.73387 9.33365 9.81766 9.13142C9.90144 8.92918 9.94457 8.71241 9.94457 8.49351C9.94457 8.2746 9.90144 8.05784 9.81766 7.8556C9.73387 7.65336 9.61107 7.46961 9.45626 7.31484L4.34826 2.20751C4.25275 2.11526 4.17656 2.00492 4.12415 1.88291C4.07175 1.76091 4.04416 1.62969 4.04301 1.49691C4.04185 1.36413 4.06715 1.23245 4.11743 1.10955C4.16772 0.986657 4.24197 0.875006 4.33586 0.781114C4.42975 0.687221 4.54141 0.612967 4.6643 0.562687C4.7872 0.512405 4.91888 0.487104 5.05166 0.488258C5.18444 0.489412 5.31566 0.516997 5.43766 0.569406C5.55966 0.621816 5.67001 0.697997 5.76226 0.793508L10.8703 5.90084C11.557 6.5889 11.9428 7.52135 11.9428 8.49351C11.9428 9.46567 11.557 10.3981 10.8703 11.0862L5.75559 16.2015C5.61574 16.3415 5.43751 16.4368 5.24347 16.4754C5.04943 16.514 4.84829 16.4942 4.66551 16.4185C4.48273 16.3428 4.32652 16.2145 4.21664 16.05C4.10677 15.8855 4.04817 15.692 4.04826 15.4942Z" fill="#48484A"/>
@@ -527,7 +533,7 @@ onMounted(async () => {
         }
 
         .form-swiper-flashsale {
-            width: clamp(240px, 60vw, 340px);
+            width: 100%;
         }
     }
 </style>

@@ -8,6 +8,7 @@
     const swiperClass = ref(props.className)
     const slidesPerView = ref(props.slidesPerView)
     const itemProduct = ref([])
+    const isMobile = ref(false)
     
     const setDataProduct = () => {
         let n = 0
@@ -100,16 +101,38 @@
         }, 0)
     }
 
+    const updateWidth = async () => {
+        setTimeout(() => {
+             isMobile.value = false
+            if (window.innerWidth > 1200) {
+           
+            }
+            else if (window.innerWidth > 991) {
+             
+            } 
+            else if (window.innerWidth > 768) {
+                
+            } 
+            else if (window.innerWidth <= 768) {
+                isMobile.value = true
+            } 
+            
+        }, 100);
+    }
+
     onMounted(async () => {
         await setDataProduct()
         await swiperProduct()
+        await updateWidth()
+        await window.addEventListener('resize', updateWidth)
+           
     })
 </script>
 
 <template>
     <div v-if="itemProduct.length > 0" class="product-wrapper">
-        <div class="frame-card-menu m-2">
-            <div class="p-5">
+        <div class="frame-card-menu m-md-2">
+            <div class="p-2 p-md-4 p-lg-5">
                 <ul class="menuproduct-wrapper">
                     <li v-for="(itemModel,keyModel) in arrMenu" class="list-product"
                         :class="{ 'active': itemProduct[0].model == itemModel.product_name}"
@@ -124,24 +147,36 @@
                 </ul>
             </div>
         </div>
-        <div v-if="itemProduct.length > 0" class="overflow-hidden">
-            <div class="row-swiper m-2">
+        <div v-if="itemProduct.length > 0" class="overflow-hidden bg-conten-product">
+            <div class="row-swiper m-md-2">
                 <div class="swiper swiper-product-wrapper swiper-content" :class="`${swiperClass}`">
                     <div class="swiper-wrapper swiper-product">
                         <div v-for="product in itemProduct[0].item_product" class="swiper-slide box-card-product">
-                            <CardProduct :key="product" :objectProduct="product"></CardProduct>
+                            <CardProduct class="card-product-list" :key="product" :objectProduct="product"></CardProduct>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="group-btn-swiper-under mt-3">
+    <div v-if="!isMobile" class="group-btn-swiper-under mt-3">
         <button class="btn-swiper btn-swiper-prev-under" :class="`prev-${swiperClass}`"><i class="fa-solid fa-angle-left" style="font-size:16px;" data-v-02281a80=""></i></button>
         <button class="btn-swiper btn-swiper-next-under" :class="`next-${swiperClass}`"><i class="fa-solid fa-angle-right" style="font-size:16px;" data-v-02281a80=""></i></button>
     </div>
 </template>
 
 <style lang="css" scoped>
-    
+    .bg-conten-product {
+        background: none;
+    }
+
+    @media only screen and (max-width: 768px) { 
+        .bg-conten-product {
+            background: white;
+        }
+
+        .card-product-list {
+            padding-top: 0;
+        }
+    }
 </style>
